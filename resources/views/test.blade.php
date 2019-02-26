@@ -9,6 +9,6 @@
 
 <body>
     <h1>Test d'une nouvelle page d'accueil</h1>
-
+    <h2>Pour ajouter une modification à GIT</h2>
 
 </body>
