@@ -9,5 +9,8 @@
 @section('content')
 
     <h1>Catalogue</h1>
+    @if(isset($fromUrl))
+        {{ $fromUrl }}
+    @endif
 
 @endsection
