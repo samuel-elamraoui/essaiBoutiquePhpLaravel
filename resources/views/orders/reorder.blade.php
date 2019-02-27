@@ -2,12 +2,11 @@
 @extends('master')
 
 @section('title')
-    Liste des commandes
-
+    Repasser une commande
 @endsection
 
 @section('content')
 
-    <h1>Page accueil</h1>
+    <h1>Repasser une commande</h1>
 
 @endsection

@@ -21,9 +21,16 @@ Route::get('/panier/', function () {
     return view('panier');
 });
 
-Route::get('/commandes/', function () {
-    return view('commandes');
-});
+Route::get('/commandes/recherche', 'ControllerOrder@search');
+
+Route::get('/commandes/', 'ControllerOrder@index');
+
+Route::get('/commandes/repasser', 'ControllerOrder@reorder');
+
+Route::get('/commandes/annuler', 'ControllerOrder@cancel');
+
+
+
 
 Route::get('/produit/{fromUrl}', function ($fromUrl) {
     return view('produit', ['fromUrl' => $fromUrl]);

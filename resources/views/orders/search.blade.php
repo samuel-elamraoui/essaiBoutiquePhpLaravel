@@ -3,11 +3,11 @@
 
 @section('title')
 
-    Commandes
+    Recherche commande
 @endsection
 
 @section('content')
 
-    <h1>Mes commandes</h1>
+    <h1>Recherche de commande</h1>
 
 @endsection
