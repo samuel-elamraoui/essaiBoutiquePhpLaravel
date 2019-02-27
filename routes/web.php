@@ -15,6 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/catalogue/', function () {
+    return view('catalogue');
+});
+Route::get('/panier/', function () {
+    return view('panier');
+});
+
+
+Route::get('/commandes/', function () {
+    return view('commandes');
+});
+
+
+Route::get('/{fromUrl}', function ($fromUrl) {
+    return view('welcome', ['fromUrl' => $fromUrl]);
 });
