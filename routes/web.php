@@ -15,16 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produit/', 'ControllerProduct@index');
-
-Route::get('/panier/', function () {
-    return view('panier');
-});
-
-Route::get('/commandes/', function () {
-    return view('commandes');
-});
-
-Route::get('/produit/{fromUrl}', function ($fromUrl) {
-    return view('produit', ['fromUrl' => $fromUrl]);
-});
+route:: get('/produit','ControllerProduct@index');
+route:: get('/produit/CreerProduit','ControllerProduct@Create');
+route:: get('/produit/Sauvegarde','ControllerProduct@Store');
+route:: get('/produit/EditerProduit','ControllerProduct@Edit');
+route:: get('/produit/{productID}','ControllerProduct@Show');
+route:: get('/produit/MiseaJour','ControllerProduct@Update');
+route:: get('/produit/SuppressionProduit','ControllerProduct@Destroy');
