@@ -19,4 +19,8 @@ class ControllerOrder extends Controller
     function cancel(){
         return view('orders.cancel');
     }
+
+    function testUrl($orderId){
+        return view('orders.index', ['fromUrl' => $orderId]);
+    }
 }

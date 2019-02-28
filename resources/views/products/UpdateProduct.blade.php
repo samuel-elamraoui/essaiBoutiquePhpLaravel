@@ -1,13 +1,9 @@
-
 @extends('master')
 
 @section('title')
-
-    Panier
+    Mise à jour du produit
 @endsection
 
 @section('content')
 
-    <h1>Panier</h1>
-
-@endsection
+    <h1>Mise à jour du produit</h1>

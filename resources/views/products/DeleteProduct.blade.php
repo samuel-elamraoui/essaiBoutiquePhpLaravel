@@ -1,13 +1,9 @@
-
 @extends('master')
 
 @section('title')
-    Home
-
+    Suppression d'un produit
 @endsection
 
 @section('content')
 
-    <h1>Page accueil</h1>
-
-@endsection
+    <h1>Suppression d'un produit</h1>

@@ -11,43 +11,33 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produit/', 'ControllerProduct@index');
 
-Route::get('/panier/', function () {
-    return view('panier');
-});
+/// route produit//////
+///
+route:: get('/produit','ControllerProduct@index');
+route:: get('/produit/CreerProduit','ControllerProduct@Create');
+route:: get('/produit/Sauvegarde','ControllerProduct@Store');
+route:: get('/produit/EditerProduit','ControllerProduct@Edit');
+route:: get('/produit/{productID}','ControllerProduct@Show');
+route:: get('/produit/MiseaJour','ControllerProduct@Update');
+route:: get('/produit/SuppressionProduit','ControllerProduct@Destroy');
 
+// route order
 Route::get('/commandes/recherche', 'ControllerOrder@search');
-
 Route::get('/commandes/', 'ControllerOrder@index');
-
 Route::get('/commandes/repasser', 'ControllerOrder@reorder');
-
+Route::get('/commandes/{commandeId}', 'ControllerOrder@testUrl');
+Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
 Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
-
-
-
-Route::get('/produit/{fromUrl}', function ($fromUrl) {
-    return view('produit', ['fromUrl' => $fromUrl]);
-});
-
-/////////////////////////////////////////////////////////// USER
-
-Route::get('/user/', function () {
-    return view('user,');
-});
-
+/// USER
 Route::get('/user/creation', 'ControllerUser@create');
-
 Route::get('/user', 'ControllerUser@confirmSave');
-
 Route::get('/user/connexion', 'ControllerUser@login');
-
-///////////////////////////////////////////////////////////
 
 
