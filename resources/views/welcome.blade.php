@@ -2,7 +2,7 @@
 @extends('master')
 
 @section('title')
-    Liste des commandes
+    Home
 
 @endsection
 

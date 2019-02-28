@@ -11,15 +11,12 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/produit/', 'ControllerProduct@index');
-
-Route::get('/panier/', function () {
-    return view('panier');
-});
 
 Route::get('/commandes/recherche', 'ControllerOrder@search');
 
@@ -29,9 +26,6 @@ Route::get('/commandes/repasser', 'ControllerOrder@reorder');
 
 Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
+Route::get('/commandes/{commandeId}', 'ControllerOrder@testUrl');
 
-
-
-Route::get('/produit/{fromUrl}', function ($fromUrl) {
-    return view('produit', ['fromUrl' => $fromUrl]);
-});
+Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
