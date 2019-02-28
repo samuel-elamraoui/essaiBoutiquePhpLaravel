@@ -35,3 +35,19 @@ Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 Route::get('/produit/{fromUrl}', function ($fromUrl) {
     return view('produit', ['fromUrl' => $fromUrl]);
 });
+
+/////////////////////////////////////////////////////////// USER
+
+Route::get('/user/', function () {
+    return view('user,');
+});
+
+Route::get('/user/creation', 'ControllerUser@create');
+
+Route::get('/user', 'ControllerUser@confirmSave');
+
+Route::get('/user/connexion', 'ControllerUser@login');
+
+///////////////////////////////////////////////////////////
+
+
