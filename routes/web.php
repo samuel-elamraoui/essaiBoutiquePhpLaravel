@@ -36,8 +36,13 @@ Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
 Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
 //// USER
-Route::get('/user/creation', 'ControllerUser@create');
-Route::get('/user', 'ControllerUser@confirmSave');
-Route::get('/user/connexion', 'ControllerUser@login');
+Route::get('/users/creation', 'ControllerUsers@create');
+Route::get('/users', 'ControllerUsers@confirmSave');
+Route::get('/users/connexion', 'ControllerUsers@login');
 
 
+///Basket
+//route::get('/basket/add/productId');
+route::get('/basket/delete/','ControllerBasket@supprimPanier');
+route::get('/basket','ControllerBasket@panier');
+route::get('/basket/update/','ControllerBasket@PanierAjour');
