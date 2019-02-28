@@ -41,3 +41,8 @@ Route::get('/user', 'ControllerUser@confirmSave');
 Route::get('/user/connexion', 'ControllerUser@login');
 
 
+///Basket
+//route::get('/basket/add/productId');
+route::get('/basket/delete/','ControllerBasket@supprimPanier');
+route::get('/basket','ControllerBasket@panier');
+route::get('/basket/update/','ControllerBasket@PanierAjour');
