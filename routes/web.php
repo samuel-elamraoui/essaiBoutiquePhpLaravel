@@ -15,6 +15,45 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// route produit//////
+///
 route:: get('/produit','ControllerProduct@index');
 route:: get('/produit/CreerProduit','ControllerProduct@Create');
 route:: get('/produit/Sauvegarde','ControllerProduct@Store');
