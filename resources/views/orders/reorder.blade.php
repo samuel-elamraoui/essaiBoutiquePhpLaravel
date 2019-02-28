@@ -2,12 +2,11 @@
 @extends('master')
 
 @section('title')
-
-    Panier
+    Repasser une commande
 @endsection
 
 @section('content')
 
-    <h1>Panier</h1>
+    <h1>Repasser une commande</h1>
 
 @endsection

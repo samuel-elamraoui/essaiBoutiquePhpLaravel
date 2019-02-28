@@ -11,45 +11,10 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /// route produit//////
@@ -61,3 +26,11 @@ route:: get('/produit/EditerProduit','ControllerProduct@Edit');
 route:: get('/produit/{productID}','ControllerProduct@Show');
 route:: get('/produit/MiseaJour','ControllerProduct@Update');
 route:: get('/produit/SuppressionProduit','ControllerProduct@Destroy');
+
+// route order
+Route::get('/commandes/recherche', 'ControllerOrder@search');
+Route::get('/commandes/', 'ControllerOrder@index');
+Route::get('/commandes/repasser', 'ControllerOrder@reorder');
+Route::get('/commandes/annuler', 'ControllerOrder@cancel');
+Route::get('/commandes/{commandeId}', 'ControllerOrder@testUrl');
+Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
