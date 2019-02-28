@@ -17,30 +17,30 @@ class ControllerProduct extends Controller
 
     public function Create (){
 
-        return view('products.AddProduct');
+        return view('products.Add');
     }
 
     public function Store()
     {
-        return view('products.SaveNewProduct');
+        return view('products.SaveNew');
     }
 
     public function Show($productID)
     {
-        return view('products.ViewProduct',['produit'=>$productID]);
+        return view('products.View',['produit'=>$productID]);
     }
     public function Edit()
     {
-        return view('products.EditProduct');
+        return view('products.Edit');
     }
     public function Update()
     {
-        return view('products.UpdateProduct');
+        return view('products.Update');
     }
 
     public function Destroy()
     {
-        return view('products.DeleteProduct');
+        return view('products.Delete');
     }
 
 }
