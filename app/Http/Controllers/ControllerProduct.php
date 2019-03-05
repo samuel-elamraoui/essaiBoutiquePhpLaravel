@@ -12,7 +12,28 @@ class ControllerProduct extends Controller
 
     public function index()
     {
-        return view('products.index');
+
+        $vintage = array (
+            'nom' => 'lunettes vintages',
+            'prix' => 150,
+            'photo' => 'lunette1.jpg');
+
+
+        $classique = array (
+            'nom' => 'lunettes classiques',
+            'prix' => 120,
+            'photo' => 'lunette2.png');
+
+
+        $chic = array (
+            'nom' => 'lunettes chic',
+            'prix' => 210 ,
+            'photo' => 'lunette3.jpg');
+
+        $Lunettes=[$chic,$classique,$vintage];
+
+
+        return view('products.index',['liste'=>$Lunettes]);
     }
 
     public function Create (){

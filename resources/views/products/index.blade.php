@@ -8,14 +8,9 @@ Catalogue
 
     <h1>Catalogue</h1>
 
+    @foreach($liste as $lunette )
+        <p>{{$lunette["nom"]}}</p></br>
+        <p>{{$lunette["prix"]}}</p></br>
 
+        @endforeach
 
-
-
-
-<!--    --><?php
-//    $bdd = new PDO('mysql:host=localhost;dbname=;charset=utf8', '', '');
-//    $products = $bdd->query('select * from ');
-//    foreach ($products as $product){
-//             echo $product[]
-//        ?>
