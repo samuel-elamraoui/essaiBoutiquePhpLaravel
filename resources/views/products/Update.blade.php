@@ -7,3 +7,4 @@
 @section('content')
 
     <h1>Mise à jour du produit</h1>
+@endsection

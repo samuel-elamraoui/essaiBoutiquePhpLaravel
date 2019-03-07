@@ -8,6 +8,6 @@
 
 @section('content')
 
-    <h1>Page accueil</h1>
+    <h1>Ma boutique</h1>
 
 @endsection

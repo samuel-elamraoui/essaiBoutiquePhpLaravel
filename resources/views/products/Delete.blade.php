@@ -7,3 +7,4 @@
 @section('content')
 
     <h1>Suppression d'un produit</h1>
+@endsection

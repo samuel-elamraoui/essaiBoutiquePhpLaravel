@@ -8,3 +8,4 @@
 
     <h1>Sauvegarde d'un nouveau produit BDD</h1>
 
+@endsection

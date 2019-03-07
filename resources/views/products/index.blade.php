@@ -6,11 +6,15 @@ Catalogue
 
 @section('content')
 
-    <h1>Catalogue</h1>
 
-    @foreach($liste as $lunette )
-        <p>{{$lunette["nom"]}}</p></br>
-        <p>{{$lunette["prix"]}}</p></br>
+    <h1></h1>
 
-        @endforeach
+    @foreach($produits as $produit)
+        {{$produit->nom}}<br>
+        {{$produit->prix}}<br>
+        <a href="{{route('fiche',['productID'=>$produit->id])}}"> Details </a>
+    @endforeach
 
+
+
+@endsection

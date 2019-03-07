@@ -18,14 +18,11 @@ Route::get('/', function () {
 
 
 /// route produit//////
-///
-route:: get('/produit','ControllerProduct@index');
-route:: get('/produit/CreerProduit','ControllerProduct@Create');
-route:: get('/produit/Sauvegarde','ControllerProduct@Store');
-route:: get('/produit/EditerProduit','ControllerProduct@Edit');
-route:: get('/produit/{productID}','ControllerProduct@Show');
-route:: get('/produit/MiseaJour','ControllerProduct@Update');
-route:: get('/produit/SuppressionProduit','ControllerProduct@Destroy');
+Route:: get('/produit','ProductController@index')->name('listeProduit'); //route vers liste de produit/catalogue
+Route:: get('/produit/trierParPrix','ProductController@indexPrix');
+Route:: get('/produit/trierParNom','ProductController@indexNom');
+Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
+
 
 // route order
 Route::get('/commandes/recherche', 'ControllerOrder@search');
@@ -46,3 +43,11 @@ Route::get('/users/connexion', 'ControllerUsers@login');
 route::get('/basket/delete/','ControllerBasket@supprimPanier');
 route::get('/basket','ControllerBasket@panier');
 route::get('/basket/update/','ControllerBasket@PanierAjour');
+Route:: get('/produit/MiseaJour','ProductController@update');
+Route:: get('/produit/Suppression','ProductController@destroy');
+
+
+///admin
+Route:: get('/produit/creer','ProductController@create');
+Route:: get('/produit/Sauvegarde','ProductController@store');
+Route:: get('/produit/Editer','ProductController@edit');
