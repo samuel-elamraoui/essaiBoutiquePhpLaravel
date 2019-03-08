@@ -10,4 +10,10 @@
         @if(isset($produit))
             {{$produit}}
         @endif
+  <form class="" action={{route('')}}>
+
+
+  </form>
+
+
 @endsection

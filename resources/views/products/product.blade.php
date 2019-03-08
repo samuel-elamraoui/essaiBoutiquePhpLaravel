@@ -10,6 +10,12 @@
 
     {{$produit['nom']}}</br>
     {{$produit['description']}}</br>
-    {{$produit['prix']}}
+    {{$produit['prix']}}</br>
+    {{$produit['image']}}</br>
+
+
+
+
+
 
 @endsection

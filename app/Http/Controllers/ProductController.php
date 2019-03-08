@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\productlist;
+use App\Productlist;
+
 
 class ProductController extends Controller
 {
@@ -39,13 +41,20 @@ class ProductController extends Controller
 
     public function create()
     {
-
+//      dd('hello');
         return view('products.Add');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return view('products.SaveNew');
+        $product=new Productlist;
+        $product->nom=$request->nom;
+        $product->prix=$request->prix;
+        $product->image=$request->image;
+        $product->description=$request->description;
+        $product->save();
+//
+        return redirect('\produit');
     }
 
     public function show($id)
@@ -65,9 +74,16 @@ class ProductController extends Controller
         return view('products.Update');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        return view('products.Delete');
+        $product= Productlist::find($id);
+        $product->delete();
+
+
+
+//        Product::where('id',$id)->delete();
+//        Post::destroy($id);
+        return redirect('/produit');
     }
 
 }
