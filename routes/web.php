@@ -16,13 +16,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 /// route produit//////
 Route:: get('/produit','ProductController@index')->name('listeProduit');//route vers liste de produit/catalogue
 Route:: get('/produit/trierParPrix','ProductController@indexPrix');
 Route:: get('/produit/trierParNom','ProductController@indexNom');
-
-
 
 // route order
 Route::get('/commandes/recherche', 'ControllerOrder@search');
@@ -37,7 +34,6 @@ Route::get('/users/creation', 'ControllerUsers@create');
 Route::get('/users', 'ControllerUsers@confirmSave');
 Route::get('/users/connexion', 'ControllerUsers@login');
 
-
 ///Basket
 //route::get('/basket/add/productId');
 route::get('/basket/delete/','ControllerBasket@supprimPanier');
@@ -47,10 +43,7 @@ Route:: put('/produit/{productID}/MiseaJour','ProductController@update')->name('
 Route:: get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
 Route:: get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
 
-
-
 ///admin
 Route:: get('/produit/creer','ProductController@create');
 Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
-
 Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
