@@ -19,7 +19,7 @@ class ProductController extends Controller
         return view('products.index', ['produits' => $products]);
     }
 
-
+//fonction tri prix croissants
     public
     function indexPrix()
     {
@@ -29,7 +29,7 @@ class ProductController extends Controller
         return view('products.index', ['produits' => $products]);
     }
 
-
+//fonction tri par nom
     public function indexNom()
     {
 

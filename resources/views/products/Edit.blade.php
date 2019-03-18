@@ -11,5 +11,6 @@
     @foreach($products as $product)
     {{Form::text('nom', $product->nom,[required=>required]) }}
     {{Form::text('prix', )}}
+    @endforeach
 
 @endsection
