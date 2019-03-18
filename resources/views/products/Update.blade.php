@@ -7,4 +7,6 @@
 @section('content')
 
     <h1>Mise à jour du produit</h1>
+
+    formulaire de mise a jour du produit
 @endsection

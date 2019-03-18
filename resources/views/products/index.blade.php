@@ -20,7 +20,7 @@ Catalogue
                 {{$produit->updated_at}}
                 <a href="{{route('fiche',$produit->id)}}" class="border border-dark test"> Details </a>
                 <a href="{{route('destroy',$produit->id)}}" class="border border-dark test"> supprimer </a>
-                {{--<a href="{{route('',$produit->id)}}" class="border border-dark test"> Details </a>--}}
+               {{--<a href="{{route('mise a jour',$produit->id)}}" class="border border-dark test"> Details </a>--}}
             </div>
 
         <br>
