@@ -44,10 +44,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product=new Productlist;
-        $product->nom=$request->nom;
-        $product->prix=$request->prix;
-        $product->image=$request->image;
+        $product->nom=$request->name;
+        $product->prix=$request->price;
+        $product->image=$request->imgUrl;
         $product->description=$request->description;
+        $product->poid=$request->weight;
+        $product->stock=$request->stock;
+        $product->idCategory=$request->prd_category_id;
         $product->save();
 //
         return redirect('\produit');

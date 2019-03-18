@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
@@ -15,10 +15,10 @@
 </head>
 <body>
 <div class="links">
-    <a href="https://laravel.com/docs">catalogue</a>
-    <a href="https://laracasts.com">produits</a>
-    <a href="https://laravel-news.com">contact</a>
-    {{--<a href="https://blog.laravel.com">Blog</a>--}}
+    <a href="/">Home</a>
+    <a href="/produit">Catalogue</a>
+    <a href="/basket">Panier</a>
+    <a href="#">Admin</a>
     {{--<a href="https://nova.laravel.com">Nova</a>--}}
     {{--<a href="https://forge.laravel.com">Forge</a>--}}
     {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
@@ -41,10 +41,10 @@
         <div class="content">
         <div class="title m-b-md">
 
+            @yield('content')
 
         </div>
-    </div>
-        @yield('content')
+        </div>
 </div>
 </body>
 </html>

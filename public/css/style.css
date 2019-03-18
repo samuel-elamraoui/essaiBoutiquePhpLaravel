@@ -7,9 +7,6 @@ html, body {
     margin: 0;
 }
 
-.full-height {
-    height: 100vh;
-}
 
 .flex-center {
     align-items: center;
@@ -31,9 +28,6 @@ html, body {
     text-align: center;
 }
 
-.title {
-    font-size: 84px;
-}
 
 .links > a {
     color: #636b6f;
@@ -48,6 +42,9 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
-.test {
-    font-size: xx-large;
+
+.photo
+{
+    max-width: 12rem;
+    max-height: 12rem;
 }
