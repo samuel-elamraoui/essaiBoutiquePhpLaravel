@@ -58,7 +58,7 @@ class ProductController extends Controller
         $detail = productlist::find($id);
         return view('products.product', ['produit' => $detail]);
     }
-    
+
 
     public function update()
     {
