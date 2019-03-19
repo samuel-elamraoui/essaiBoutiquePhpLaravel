@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Order;
 use Illuminate\Http\Request;
-use App\Product;
+
 
 class ControllerBasket extends Controller{
 
@@ -23,14 +24,12 @@ class ControllerBasket extends Controller{
 
     $lastBasket = $basket->id;
     $line = $basket;
-    dd($line);
+
+    dump($line);
 
     $line->product()->attach($id);
     $line->order()->attach($lastBasket);
-    $line->product()->pivot->quantity = 1;
     $line->save();
-
-
 
     return view('basket.addBasket', ['panier' => $basket]);
 }

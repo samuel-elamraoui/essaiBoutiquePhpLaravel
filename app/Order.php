@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-   // protected $fillable = ['num_line', 'date_order', 'status', 'weight', 'stock', 'imgUrl', 'id_category'];
     public $timestamps = false;
 
     public function customer()
