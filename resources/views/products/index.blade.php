@@ -12,9 +12,9 @@ Catalogue
 
     @foreach($produits as $produit)
             <div class="col-4 border border-warning test">
-                {{$produit->nom}}<br>
-                {{$produit->prix}}€<br>
-                {{$produit->image}}<br>
+                {{$produit->name}}<br>
+                {{$produit->price}}€<br>
+                {{$produit->imgUrl}}<br>
                 {{$produit->description}}<br>
                 {{$produit->created_at}}<br>
                 {{$produit->updated_at}}
