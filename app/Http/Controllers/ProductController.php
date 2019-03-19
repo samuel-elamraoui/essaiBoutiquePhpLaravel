@@ -21,7 +21,7 @@ class ProductController extends Controller
     function indexPrix()
     {
 
-        $products = productlist::orderby('prix', 'desc')->get();  // requete pour trier les produits par ordre croissant
+        $products = productlist::orderby('price', 'desc')->get();  // requete pour trier les produits par ordre croissant
 
         return view('products.index', ['produits' => $products]);
     }
@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function indexNom()
     {
 
-        $products = productlist::orderby('nom')->get();
+        $products = productlist::orderby('name')->get();
 
         return view('products.index', ['produits' => $products]);
     }
@@ -44,10 +44,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product=new Productlist;
-        $product->nom=$request->nom;
-        $product->prix=$request->prix;
-        $product->image=$request->image;
+
+        $product->name=$request->name;
+        $product->price=$request->price;
+        $product->imgUrl=$request->imgUrl;
         $product->description=$request->description;
+        $product->poid=$request->weight;
+        $product->stock=$request->stock;
+        $product->idCategory=$request->prd_category_id;
         $product->save();
 //
         return redirect('\produit');

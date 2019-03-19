@@ -8,9 +8,6 @@ html, body {
 
 }
 
-.full-height {
-    height: 100vh;
-}
 
 .flex-center {
     align-items: center;
@@ -32,9 +29,6 @@ html, body {
     text-align: center;
 }
 
-.title {
-    font-size: 84px;
-}
 
 .article {
     display: flex;
@@ -49,8 +43,13 @@ html, body {
 }
 
 .m-b-md {
-    /*margin-bottom: 30px;*/
-/*}*/
-.test {
-    /*font-size: xx-large;*/
+
+    margin-bottom: 30px;
 }
+
+.photo
+{
+    max-width: 12rem;
+    max-height: 12rem;
+}
+
