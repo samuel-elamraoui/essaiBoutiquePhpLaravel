@@ -2,14 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
+use App\Product;
 
 class ControllerBasket extends Controller{
 
-    public function ajoutPanier()
+    public function ajoutPanier($id)
 {
-        return view('basket.addBasket');
+//    $product = product::find($id);
+
+    $basket = new Order;
+    $basket->date_order='2019-03-19';
+    $basket->status = 'P';
+    $basket->delivery_cost = 0;
+    $basket->adr_delivery = 17;
+    $basket->adr_invoice = 17;
+    $basket->customer_id = 7;
+    $basket->save();
+
+    $lastBasket = $basket->id;
+    $line = $basket;
+    dd($line);
+
+    $line->product()->attach($id);
+    $line->order()->attach($lastBasket);
+    $line->product()->pivot->quantity = 1;
+    $line->save();
+
+
+
+    return view('basket.addBasket', ['panier' => $basket]);
 }
+
+    Public function store(){
+
+        return view('basket.index');
+    }
+
     public function supprimPanier(){
         return view ('basket.delete');
     }

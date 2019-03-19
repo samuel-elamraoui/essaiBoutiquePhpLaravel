@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class customer extends Model
 {
-    public function order_head()
+    public function order()
     {
-        return $this->hasOne('App\Order_head');
+        return $this->hasMany('App\Order');
+    }
+
+    public function adress()
+    {
+        return $this->hasMany('App\Adress');
     }
 }

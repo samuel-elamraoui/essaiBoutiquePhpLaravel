@@ -8,4 +8,6 @@
 
     <h1>Formulaire d'ajout au panier</h1>
 
+    @dd($panier)
+
 @endsection

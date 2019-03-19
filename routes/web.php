@@ -21,6 +21,7 @@ Route:: get('/produit','ProductController@index')->name('listeProduit');//route 
 Route:: get('/produit/trierParPrix','ProductController@indexPrix');
 Route:: get('/produit/trierParNom','ProductController@indexNom');
 
+
 // route order
 Route::get('/commandes/recherche', 'ControllerOrder@search');
 Route::get('/commandes/', 'ControllerOrder@index');
@@ -35,7 +36,7 @@ Route::get('/users', 'ControllerUsers@confirmSave');
 Route::get('/users/connexion', 'ControllerUsers@login');
 
 ///Basket
-//route::get('/basket/add/productId');
+route::get('/basket/add/{productId}', 'ControllerBasket@ajoutPanier')->name('addPrd');
 route::get('/basket/delete/','ControllerBasket@supprimPanier');
 route::get('/basket','ControllerBasket@panier');
 route::get('/basket/update/','ControllerBasket@PanierAjour');
