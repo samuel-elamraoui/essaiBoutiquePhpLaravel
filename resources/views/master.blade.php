@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
@@ -16,18 +16,21 @@
 <body>
 
 
-<div class="flex-center">
+<nav>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/produit">Catalogue</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/basket">Panier</a>
+        </li>
+    </ul>
 
+</nav>
 
-<div class="links">
-    <a href="/">Home</a>
-    <a href="/produit">Catalogue</a>
-    <a href="/basket">Panier</a>
-    <a href="#">Admin</a>
-    {{--<a href="https://nova.laravel.com">Nova</a>--}}
-    {{--<a href="https://forge.laravel.com">Forge</a>--}}
-    {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
-</div>
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">

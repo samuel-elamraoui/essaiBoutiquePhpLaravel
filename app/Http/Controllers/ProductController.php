@@ -77,6 +77,11 @@ class ProductController extends Controller
         return redirect('/produit');
     }
 
+    public function edit($id)
+    {
+        return view('products.Edit');
+    }
+
 }
 
 
