@@ -13,6 +13,6 @@ class Prd_category extends Model
       return $this->hasMany('App\Productlist', 'prd_category_id' , 'id');
 //    }
 
-}
+}}
 
 

@@ -44,6 +44,6 @@ Route:: get('/produit/Editer/{productID}','ProductController@edit')->name('edit'
 Route:: get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
 
 ///admin
-Route:: get('/produit/creer','ProductController@create');
+Route:: get('/produit/creer','ProductController@create')->name('createPrd');
 Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
 Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
