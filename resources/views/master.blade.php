@@ -14,15 +14,23 @@
 
 </head>
 <body>
-<div class="links">
-    <a href="https://laravel.com/docs">catalogue</a>
-    <a href="https://laracasts.com">produits</a>
-    <a href="https://laravel-news.com">contact</a>
-    {{--<a href="https://blog.laravel.com">Blog</a>--}}
-    {{--<a href="https://nova.laravel.com">Nova</a>--}}
-    {{--<a href="https://forge.laravel.com">Forge</a>--}}
-    {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
-</div>
+
+
+<nav>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/produit">Catalogue</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/basket">Panier</a>
+        </li>
+    </ul>
+
+</nav>
+
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
@@ -38,13 +46,14 @@
         </div>
     @endif
 
+
         <div class="content">
         <div class="title m-b-md">
 
+            @yield('content')
 
         </div>
-    </div>
-        @yield('content')
+        </div>
 </div>
 </body>
 </html>

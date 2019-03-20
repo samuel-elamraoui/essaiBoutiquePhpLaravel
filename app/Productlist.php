@@ -11,4 +11,10 @@ class Productlist extends Model
     public function discount(){
         return $this->hasOne('App\discount');
     }
+
+
+    public function category(){
+        return $this->belongsTo('App\Prd_category', 'prd_category_id' , 'id');
+    }
+
 }
