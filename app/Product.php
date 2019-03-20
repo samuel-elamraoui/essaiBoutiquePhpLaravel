@@ -14,7 +14,7 @@ class Product extends Model
         return $this->belongsTo('App\Prd_category', 'prd_category_id' , 'id');
     }
 
-    public function order()
+    public function orders()
     {
         return $this->belongsToMany('App\Order')->withPivot('quantity');
     }

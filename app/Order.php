@@ -8,12 +8,14 @@ class Order extends Model
 {
     public $timestamps = false;
 
+
+
     public function customer()
     {
         return $this->belongsTo('App\Customer');
     }
 
-    public function product()
+    public function products()
     {
         return $this->belongsToMany('App\Product')->withPivot('quantity');
     }
