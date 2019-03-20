@@ -8,8 +8,10 @@ Catalogue
 
 
     <h1>Catalogue</h1>
-{{--    @dd($produits)--}}
 
+<div class="cat">
+    <a href="#" class="article"> Catégories </a>
+</div>
 
     @foreach($produits as $produit)
             <div class="article">
