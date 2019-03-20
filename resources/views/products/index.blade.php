@@ -8,8 +8,8 @@ Catalogue
 
 
     <h1>Catalogue</h1>
-{{--    @dd($produits)--}}
 
+    @php(dump(Session::all()))
 
     @foreach($produits as $produit)
             <div class="article">
