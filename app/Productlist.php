@@ -8,4 +8,7 @@ class Productlist extends Model
 {
     public $timestamps = false;
     protected $table='products';     //designe la table qu'il utilise
+    public function discount(){
+        return $this->hasOne('App\discount');
+    }
 }
