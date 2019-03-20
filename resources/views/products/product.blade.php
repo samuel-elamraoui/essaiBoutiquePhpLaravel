@@ -9,11 +9,10 @@
     <h1>fiche produit</h1>
 <div class="article">
 
-    {{$produit['nom']}}</br>
-    {{$produit['description']}}</br>
-    {{$produit['prix']}}</br>
-    {{$produit['image']}}</br>
-</div>
+    {{$produit->name}}</br>
+    {{$produit->description}}</br>
+    {{$produit->price/100}} €</br>
+    {{asset('image/'.$produit -> imgUrl)}}</div>
 
 
 
