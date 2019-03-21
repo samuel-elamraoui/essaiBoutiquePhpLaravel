@@ -38,7 +38,7 @@ Route::get('/users/connexion', 'ControllerUsers@login');
 ///Basket
 route::get('/basket/add/{productId}', 'ControllerBasket@ajoutPanier')->name('addPrd');
 route::get('/basket/delete/','ControllerBasket@supprimPanier');
-route::get('/basket','ControllerBasket@panier');
+route::get('/basket','ControllerBasket@panier')->name('basket');
 route::get('/basket/update/','ControllerBasket@PanierAjour');
 Route:: put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 Route:: get('/produit/Editer/{productID}','ProductController@edit')->name('edit');

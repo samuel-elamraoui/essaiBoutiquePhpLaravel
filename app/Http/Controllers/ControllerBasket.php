@@ -43,8 +43,12 @@ class ControllerBasket extends Controller{
         return view ('basket.delete');
     }
 
-    public function Panier(){
-        return view ('basket.index');
+    public function Panier(Request $request){
+
+    $basketId = $request->session()->get('panier');
+    $basket = Order::find($basketId);
+
+        return view ('basket.index', ['panier' => $basket]);
     }
     public function PanierAjour(){
         return view ('basket.Post_index');
