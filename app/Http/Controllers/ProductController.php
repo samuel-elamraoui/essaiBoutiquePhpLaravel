@@ -5,14 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Product;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = product::all(); //requete pour afficher tous mes articles
+        $sort = "name";
+        $order = "asc";
+        if (null !== $request->get('sort') && (null !== $request->get('order'))) {
+            $sort = $request->get('sort');
+            $order = $request->get('order');
+        }
+        $products = product::orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
         return view('products.index', ['produits' => $products]);
     }
 

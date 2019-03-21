@@ -9,7 +9,10 @@ Catalogue
 
     <h1>Catalogue</h1>
 
-    @php(dump(Session::all()))
+    <p>Classement par : </p>
+    <a href="/produit?sort=price&order=asc"><button type="button">Prix croissant</button> </a>
+    <a href="/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
+    <a href="/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
 
     @foreach($produits as $produit)
             <div class="article">
