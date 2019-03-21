@@ -45,7 +45,8 @@ class StockController extends Controller
      */
     public function show($id)
     {
-        //
+        $detail = productlist::find($id);
+        return view('products.product', ['produit' => $detail]);
     }
 
     /**

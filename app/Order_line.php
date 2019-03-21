@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class order_line extends Model
 {
-    //
+
 }

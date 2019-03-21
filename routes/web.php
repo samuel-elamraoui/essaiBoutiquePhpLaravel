@@ -51,5 +51,5 @@ Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //r
 
 ///// STATISTIQUES
 Route::get('/admin/stats/stocks', 'StockController@stock');
-Route::get('/admin/stats/order', 'OrderController@order');
+Route::get('/admin/stats/order', 'ControllerOrder@order');
 Route::get('/admin/stats/trafic', 'TraficController@trafic');

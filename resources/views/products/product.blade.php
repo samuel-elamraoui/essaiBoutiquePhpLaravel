@@ -16,9 +16,11 @@
     </div>
 
 
+    <h1>LES STOCK</h1>
 
-
-
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{$produit->stock}}%;" aria-valuenow="{{$produit->stock}}" aria-valuemin="0" aria-valuemax="100">{{$produit->stock}} / 100</div>
+    </div>
 
 
 @endsection
