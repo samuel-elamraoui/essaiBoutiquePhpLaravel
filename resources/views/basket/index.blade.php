@@ -6,12 +6,16 @@
 
 @section('content')
 
+    @if(! $panier == null))
     <h1>Votre panier </h1>
+
+    {{--*********en-tête du panier*********--}}
     {{$panier->customer->last_name}} {{$panier->customer->first_name}}<br/>
     Panier n° {{$panier->id}} du {{$panier->date_order}}<br/>
 
+    {{--*********contenu du panier*********--}}
     @foreach($panier->products as $product)
-        <form action="{{route('suppLine')}}" method="post">
+        <form action="{{route('suppLine', $product->id)}}" method="post">
             @csrf
         <label for="{{$product->name}}">
             <div class="article">
@@ -25,4 +29,20 @@
         </label>
         </form>
     @endforeach
+
+    {{--*********Supression panier*********--}}
+    <form action="{{route('delBasket')}}" method="post">
+        @csrf
+        <button type="submit" name="suppBasket" value="{{$panier->id}}">Annuler panier</button>
+    </form>
+
+    {{--*********recalcul du panier*********--}}
+    {{--<form action="{{route('basket')}}" method="post">--}}
+        {{--@csrf--}}
+        {{--<button type="submit" name="totalbasket"></button>--}}
+    {{--</form>--}}
+
+    @else
+        <h1>Panier vide, <a href="/produit"> retour à la liste des produits</a></h1>
+    @endif
 @endsection

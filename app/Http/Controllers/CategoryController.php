@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prd_category;
-use App\Productlist;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -41,7 +41,7 @@ class CategoryController extends Controller
 //      dans $products j'apelle mon modele auquel j'applique une condition(WHERE)
 //      la methode cursor me permet de parcourir uniquement les enregistrement dont prd_category_id=$monID.
 
-        $products = Productlist::where('prd_category_id', $idDeMaCategorie)->get();
+        $products = Product::where('prd_category_id', $idDeMaCategorie)->get();
         // boucle foreach qui me permet de parcourir la liste des resultat (via Productlist)
         // a chaque tour de boucle elle parcourt une ligne et assigne a product la valeur de la ligne.
         foreach ($products as $product) {

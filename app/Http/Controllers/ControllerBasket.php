@@ -39,19 +39,29 @@ class ControllerBasket extends Controller{
         return view('basket.index');
     }
 
-    public function suppLine()
+    public function suppLine(Request $request, $id)
     {
+        $product = Product::find($id);
+        $orderId = $request->session()->get('panier');
+        $product->orders()->detach($orderId);
         return redirect(route('basket'));
     }
 
-    public function supprimPanier(){
-        return view ('basket.delete');
+    public function supprimPanier(Request $request){
+
+        $orderId = $request->session()->get('panier');
+        $basket = Order::find($orderId);
+        $basket->products()->detach();
+        $basket->delete();
+        $request->session()->forget('panier');
+
+        return view ('basket.delete', ['panierSupp' => $orderId]);
     }
 
     public function Panier(Request $request){
 
-    $basketId = $request->session()->get('panier');
-    $basket = Order::find($basketId);
+        $basketId = $request->session()->get('panier');
+        $basket = Order::find($basketId);
 
         return view ('basket.index', ['panier' => $basket]);
     }

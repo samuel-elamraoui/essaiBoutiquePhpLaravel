@@ -6,6 +6,6 @@
 
 @section('content')
 
-    <h1>panier supprimer retour a la liste des produit</h1>
+    <h1>panier n° {{$panierSupp}} supprimé,<a href="/produit"> retour à la liste des produits</a></h1>
 
 @endsection
