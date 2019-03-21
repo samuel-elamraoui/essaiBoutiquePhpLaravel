@@ -7,6 +7,7 @@
 @section('content')
 
 
+
     <div class="article">
         <h1>fiche produit</h1>
         {{$produit->name}}<br>

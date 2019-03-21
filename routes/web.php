@@ -31,7 +31,7 @@ Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
 Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
 //// USER
-Route::get('/users/creation', 'ControllerUsers@create');
+Route::get('/users/creation', 'ControllerUsers@create')->name('userCreate');
 Route::get('/users', 'ControllerUsers@confirmSave');
 Route::get('/users/connexion', 'ControllerUsers@login');
 
