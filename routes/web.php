@@ -48,3 +48,7 @@ Route:: get('/produit/Suppression/{productID}','ProductController@destroy')->nam
 Route:: get('/produit/creer','ProductController@create')->name('createPrd');
 Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
 Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
+Route:: get('/admin/category', 'CategoryController@show');
+Route:: post('admin/ajout','CategoryController@create')->name('cat');
+Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
+Route:: post('admin/modif','CategoryController@update')->name('modifcat');
