@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Productlist;
+use App\Product;
 
 
 class ProductController extends Controller
@@ -12,7 +12,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = productlist::all(); //requete pour afficher tous mes articles
+        $products = product::all(); //requete pour afficher tous mes articles
         return view('products.index', ['produits' => $products]);
     }
 
@@ -21,7 +21,7 @@ class ProductController extends Controller
     function indexPrix()
     {
 
-        $products = productlist::orderby('price', 'desc')->get();  // requete pour trier les produits par ordre croissant
+        $products = product::orderby('price', 'desc')->get();  // requete pour trier les produits par ordre croissant
 
         return view('products.index', ['produits' => $products]);
     }
@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function indexNom()
     {
 
-        $products = productlist::orderby('name')->get();
+        $products = product::orderby('name')->get();
 
         return view('products.index', ['produits' => $products]);
     }
@@ -43,7 +43,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $product=new Productlist;
+        $product=new Product;
 
         $product->name=$request->name;
         $product->price=$request->price;
@@ -59,7 +59,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $detail = productlist::find($id);
+        $detail = product::find($id);
         return view('products.product', ['produit' => $detail]);
     }
 
@@ -72,7 +72,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product= Productlist::find($id);
+        $product= Product::find($id);
         $product->delete();
         return redirect('/produit');
     }

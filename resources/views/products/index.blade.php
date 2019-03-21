@@ -8,10 +8,8 @@ Catalogue
 
 
     <h1>Catalogue</h1>
+    @php(dump(Session::all()))
 
-<div class="cat">
-    <a href="#" class="article"> Catégories </a>
-</div>
 
     @foreach($produits as $produit)
             <div class="article">
@@ -22,6 +20,7 @@ Catalogue
 {{--                {{$produit->created_at}}<br>--}}
 {{--                {{$produit->updated_at}}--}}
                 <a href="{{route('fiche',$produit->id)}}" class="article"> Fiche produit </a>
+                <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>
                 <a href="{{route('destroy',$produit->id)}}" class="article"> Supprimer </a>
                 <a href="{{route('edit',$produit->id)}}" class="article"> Modifier produit </a>
 
