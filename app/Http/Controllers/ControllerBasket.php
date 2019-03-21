@@ -34,9 +34,14 @@ class ControllerBasket extends Controller{
     return redirect(route('listeProduit'));
 }
 
-    Public function store()
+    public function store()
     {
         return view('basket.index');
+    }
+
+    public function suppLine()
+    {
+        return redirect(route('basket'));
     }
 
     public function supprimPanier(){
