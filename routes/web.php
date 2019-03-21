@@ -43,10 +43,16 @@ Route:: put('/produit/{productID}/MiseaJour','ProductController@update')->name('
 Route:: get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
 Route:: get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
 
-///admin
-Route:: get('/produit/creer','ProductController@create');
+////////// ADMIN
+///// PRODUCTS
+Route:: get('/produit/creer','ProductController@create')->name('createPrd');
 Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
 Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
+
+///// STATISTIQUES
+Route::get('/admin/stats/stocks', 'StockController@stock');
+Route::get('/admin/stats/order', 'ControllerOrder@order');
+Route::get('/admin/stats/trafic', 'TraficController@trafic');
 Route:: get('/admin/category', 'CategoryController@show');
 Route:: post('admin/ajout','CategoryController@create')->name('cat');
 Route:: post('admin/suppression','CategoryController@delete')->name('supcat');

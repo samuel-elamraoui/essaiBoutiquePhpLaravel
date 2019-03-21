@@ -13,11 +13,8 @@ class ControllerOrder extends Controller
 
     function index (){
 
-        $order_heads = order_head::all();
-
-
-        return view('orders.index', ['order_heads' => $order_heads ]);
     }
+
     function reorder (){
         return view('orders.reorder');
     }
