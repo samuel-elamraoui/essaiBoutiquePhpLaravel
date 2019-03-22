@@ -8,6 +8,6 @@
 @section('content')
 
     <h2>ETAT DES CATEGORIES</h2>
-    <p> la categorie {{$CategorieName->name}} a bien été supprimé  .</p>
+<p> la categorie {{$ancienNom->name}} a été remplacée par {{$nouveauNom}}</p>
 
 @endsection
