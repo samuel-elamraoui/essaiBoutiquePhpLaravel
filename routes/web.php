@@ -30,7 +30,7 @@ Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
 Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
 //// USER
-Route::get('/users/creation', 'ControllerUsers@create');
+Route::get('/users/creation', 'ControllerUsers@create')->name('userCreate');
 Route::get('/users', 'ControllerUsers@confirmSave');
 Route::get('/users/connexion', 'ControllerUsers@login');
 
@@ -53,6 +53,9 @@ Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //r
 Route::get('/admin/stats/stocks', 'StockController@stock');
 Route::get('/admin/stats/order', 'ControllerOrder@order');
 Route::get('/admin/stats/trafic', 'TraficController@trafic');
+Route:: get('/produit/{productID}','ProductController@show')->name('fiche');
+//route vers fiche produit
+Route:: get('/admin','AdminController@index');
 Route:: get('/admin/category', 'CategoryController@show');
 Route:: post('admin/ajout','CategoryController@create')->name('cat');
 Route:: post('admin/suppression','CategoryController@delete')->name('supcat');

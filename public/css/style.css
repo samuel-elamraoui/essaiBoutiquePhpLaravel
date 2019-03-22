@@ -56,3 +56,14 @@ nav {
     max-height: 12rem;
 }
 
+.bouton {
+    width: 900px;
+    height: 150px;
+    background-color: deepskyblue;
+    font-size: 30px;
+}
+.acceuil{
+    font-size: 40px;
+    color: greenyellow;
+}
+

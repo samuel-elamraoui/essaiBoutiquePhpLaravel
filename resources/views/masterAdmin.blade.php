@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
-    <title>@yield('title')</title>
+    <title>titre</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -22,11 +22,12 @@
     <a href="/">Home</a>
     <a href="/produit">Catalogue</a>
     <a href="/basket">Panier</a>
-    <a href="#">Admin</a>
+
     {{--<a href="https://nova.laravel.com">Nova</a>--}}
     {{--<a href="https://forge.laravel.com">Forge</a>--}}
     {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
 </div>
+
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
@@ -41,9 +42,10 @@
             @endauth
         </div>
     @endif
-
+        <div> @yield('title')  </div>
 
     <div class="content">
+
         <div class="title m-b-md">
 
             @yield('content')
