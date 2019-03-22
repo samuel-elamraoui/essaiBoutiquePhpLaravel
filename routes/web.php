@@ -40,10 +40,12 @@ route::get('/basket/add/{productId}', 'ControllerBasket@ajoutPanier')->name('add
 route::post('/basket/delete','ControllerBasket@supprimPanier')->name('delBasket');
 route::post('/basket/deleteLine/{productId}','ControllerBasket@suppLine')->name('suppLine');
 route::get('/basket','ControllerBasket@panier')->name('basket');
+route::post('/basket/updateQty/{orderId}', 'ControllerBasket@updateQty')->name('updateQty');
 route::get('/basket/update/','ControllerBasket@PanierAjour');
-Route:: put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
-Route:: get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
-Route:: get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
+
+Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
+Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
+Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
 
 ///admin
 Route:: get('/produit/creer','ProductController@create')->name('createPrd');

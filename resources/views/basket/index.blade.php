@@ -6,43 +6,68 @@
 
 @section('content')
 
-    @if(! $panier == null))
+
+    @if(! $panier == null)
     <h1>Votre panier </h1>
+
+
+
+    @php($totalPanier=0)
 
     {{--*********en-tête du panier*********--}}
     {{$panier->customer->last_name}} {{$panier->customer->first_name}}<br/>
     Panier n° {{$panier->id}} du {{$panier->date_order}}<br/>
 
+    <form action="{{route('updateQty', $panier->id)}}" method="post" id="recalcul">
+        @csrf
+    </form>
     {{--*********contenu du panier*********--}}
     @foreach($panier->products as $product)
         <form action="{{route('suppLine', $product->id)}}" method="post">
             @csrf
         <label for="{{$product->name}}">
             <div class="article">
-                {{$product->name}}<br/>
+                {{$product->name}}. disponibilité :  {{$product->stock}}<br/>
                 Prix unitaire : {{number_format((($product->price)/100), 2, ',', ' '). '€' }}
                 quantité :
-                <input type="number" min="1" id="{{$product->name}}" name="quantity" value="{{$product->pivot->quantity}}">
+                <input type="number" min="1" id="{{$product->name}}" name="quantity[{{$product->id}}]" value="{{$product->pivot->quantity}}" form="recalcul">
                  total : {{number_format((($product->pivot->quantity)*(($product->price)/100)), 2, ',', ' '). '€' }}
                 <button type="submit" name="suppProduct" value="{{$product->id}}">Supprimer</button>
             </div>
+
+            @php($totalPanier = $totalPanier + ($product->price) * ($product->pivot->quantity))
         </label>
         </form>
+
+        @if(isset($noMajs))
+            {{--@foreach($noMajs => $noMaj)--}}
+                {{--<p>impossible de modifier la quantité pour {{$product->name}}. Rupture de stock.</p>--}}
+            {{--@endforeach--}}
+        @endif
+
     @endforeach
 
-    {{--*********Supression panier*********--}}
-    <form action="{{route('delBasket')}}" method="post">
-        @csrf
-        <button type="submit" name="suppBasket" value="{{$panier->id}}">Annuler panier</button>
-    </form>
 
-    {{--*********recalcul du panier*********--}}
-    {{--<form action="{{route('basket')}}" method="post">--}}
-        {{--@csrf--}}
-        {{--<button type="submit" name="totalbasket"></button>--}}
-    {{--</form>--}}
+    <div class="article">
+        {{--*********Supression panier*********--}}
+        <form action="{{route('delBasket')}}" method="post">
+            @csrf
+            <button type="submit" name="suppBasket" value="{{$panier->id}}">Annuler panier</button>
+        </form>
+
+        {{--*********recalcul du panier*********--}}
+        <button type="submit" form="recalcul" value="{{$panier->id}}">Recalcul du Panier</button>
+
+        {{--*********Total du panier*********--}}
+        <strong>
+            Total du panier : {{number_format(($totalPanier/100),2, ',', ' '). '€'}}
+        </strong>
+
+    </div>
+
 
     @else
         <h1>Panier vide, <a href="/produit"> retour à la liste des produits</a></h1>
     @endif
+
 @endsection

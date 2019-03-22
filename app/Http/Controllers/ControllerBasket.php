@@ -22,13 +22,13 @@ class ControllerBasket extends Controller{
         $basket->customer_id = 7;
         $basket->save();
 
-        $basket->products()->attach($id, ['quantity' => 10]);
+        $basket->products()->attach($id, ['quantity' => 1]);
 
         Session::put('panier', $basket->id);
     } else {
         $orderId = $request->session()->get('panier');
         $basket = Order::find($orderId);
-        $basket->products()->attach($id, ['quantity' => 10]);
+        $basket->products()->attach($id, ['quantity' => 1]);
     }
 
     return redirect(route('listeProduit'));
@@ -58,12 +58,33 @@ class ControllerBasket extends Controller{
         return view ('basket.delete', ['panierSupp' => $orderId]);
     }
 
-    public function Panier(Request $request){
+    public function updateQty($orderId, Request $request)
+    {
+        $basket = Order::find($orderId);
+        $products=$basket->products;
+        $noMaj = [];
+        foreach ($products as $keyPrd => $product) {
+            if ($product->stock < $request->get('quantity')[$product->id]) {
+                array_push($noMaj, $product->id);
+            } else {
+                $basket->products()->detach($product->id);
+                $basket->products()->attach($product->id, ['quantity' => $request->get('quantity')[$product->id]]);
+            }
+        }
+        Session::put([ 'noMaj' => $noMaj]);
+
+        return redirect(route('basket'));
+    }
+
+    public function panier(Request $request){
 
         $basketId = $request->session()->get('panier');
         $basket = Order::find($basketId);
 
-        return view ('basket.index', ['panier' => $basket]);
+        $noMajs = $request->session()->get('noMaj');
+        $request->session()->forget('noMaj');
+
+        return view ('basket.index', ['panier' => $basket], ['noMajs' => $noMajs]);
     }
     public function PanierAjour(){
         return view ('basket.Post_index');
