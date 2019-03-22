@@ -36,10 +36,7 @@ class CategoryController extends Controller
     {
         //initialisation de la variable '$idDeMaCategorie' qui recupere la donnee 'cstegorie'(=ID ds la table 'prd_categories
         //
-        $idDeMaCategorie
-
-
-            = $request->input('categorie');
+        $idDeMaCategorie = $request->input('categorie');
 
 //      dans $products j'apelle mon modele auquel j'applique une condition(WHERE)
 //      la methode cursor me permet de parcourir uniquement les enregistrement dont prd_category_id=$monID.
