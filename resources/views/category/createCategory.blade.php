@@ -1,4 +1,4 @@
-@extends('masterAdmin')
+@extends('master')
 
 @section('title')
     <h2>ETAT DES CATEGORIES</h2>
@@ -8,6 +8,6 @@
 @section('content')
 
     <h2>ETAT DES CATEGORIES</h2>
-<p> la categorie {{$ancienNom->name}} a été remplacée par {{$nouveauNom}}</p>
+    <p> la categorie {{$newCategory->name}} a été crée.</p>
 
 @endsection

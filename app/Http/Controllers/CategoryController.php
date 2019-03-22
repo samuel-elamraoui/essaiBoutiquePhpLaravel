@@ -15,9 +15,14 @@ class CategoryController extends Controller
         return view('category.addCategory', ['categories' => $categories]);
     }
 
-    public function create()
+    public function create(Request $request)
+
     {
-        return view('category.');
+        $categorie=new Prd_category;
+        $categorie->name=$request->name;
+        $categorie->save();
+
+        return view('category.createCategory',['newCategory' => $categorie]);
 
     }
 
@@ -28,7 +33,7 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-//dd($request->all());
+dd($request);
         $idDeMaCategorie = $request->input('categorie');
         $nouveauNom = $request->input ('name');
         $cat=Prd_category::find($idDeMaCategorie);
