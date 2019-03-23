@@ -61,6 +61,11 @@
         {{--*********recalcul du panier*********--}}
         <button type="submit" form="recalcul" value="{{$panier->id}}">Recalcul du Panier</button>
 
+        {{--*********validation du panier*********--}}
+        <form action="{{route('basketValidate')}}" method="post">
+            @csrf
+            <button type="submit" name="validate" value="{{$panier->id}}">Valider Cmd</button>
+        </form>
         {{--*********Total du panier*********--}}
         <strong>
             Total du panier : {{number_format(($totalPanier/100),2, ',', ' '). '€'}}

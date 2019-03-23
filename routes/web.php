@@ -42,6 +42,7 @@ route::post('/basket/deleteLine/{productId}','ControllerBasket@suppLine')->name(
 route::get('/basket','ControllerBasket@panier')->name('basket');
 route::post('/basket/updateQty/{orderId}', 'ControllerBasket@updateQty')->name('updateQty');
 route::get('/basket/update/','ControllerBasket@PanierAjour');
+route::post('/basket/validate/','ControllerBasket@validation')->name('basketValidate');
 
 Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');

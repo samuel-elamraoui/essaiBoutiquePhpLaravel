@@ -86,6 +86,19 @@ class ControllerBasket extends Controller{
 
         return view ('basket.index', ['panier' => $basket], ['noMajs' => $noMajs]);
     }
+
+    public function validation(Request $request){
+
+        $basket = Order::find($request->get('validate'));
+        $basket->status = 'V';
+        $basket->save();
+
+        $orderId = $request->session()->get('panier');
+        $request->session()->forget('panier');
+
+        return view('basket.validate', ['orderId' => $orderId]);
+      }
+
     public function PanierAjour(){
         return view ('basket.Post_index');
     }
