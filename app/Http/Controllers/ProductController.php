@@ -19,7 +19,7 @@ class ProductController extends Controller
             $sort = $request->get('sort');
             $order = $request->get('order');
         }
-        $products = product::orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
+        $products = product::where('stock', '>',  0)->orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
         return view('products.index', ['produits' => $products]);
     }
 

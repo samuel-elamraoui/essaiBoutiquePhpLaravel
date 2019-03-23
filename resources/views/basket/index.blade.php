@@ -27,6 +27,7 @@
             @csrf
         <label for="{{$product->name}}">
             <div class="article">
+                ref produit : {{$product->id}}<br/>
                 {{$product->name}}. disponibilité :  {{$product->stock}}<br/>
                 Prix unitaire : {{number_format((($product->price)/100), 2, ',', ' '). '€' }}
                 quantité :
@@ -40,9 +41,11 @@
         </form>
 
         @if(isset($noMajs))
-            {{--@foreach($noMajs => $noMaj)--}}
-                {{--<p>impossible de modifier la quantité pour {{$product->name}}. Rupture de stock.</p>--}}
-            {{--@endforeach--}}
+            @foreach($noMajs as $noMaj)
+                @if($noMaj == $product->id)
+                    <p><strong>impossible de modifier la quantité pour {{$product->name}}. Rupture de stock.</strong></p>
+                @endif
+            @endforeach
         @endif
 
     @endforeach
