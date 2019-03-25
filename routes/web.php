@@ -58,7 +58,7 @@ Route:: get('/admin/category', 'CategoryController@show');
 Route:: post('admin/ajout','CategoryController@create')->name('cat');
 Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
 Route:: post('admin/modif','CategoryController@update')->name('modifcat');
-=======
+
 ////////// ADMIN
 ///// PRODUCTS
 Route::get('/produit/creer','ProductController@create')->name('createPrd');
