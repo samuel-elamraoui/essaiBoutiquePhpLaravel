@@ -58,3 +58,9 @@ nav {
     max-height: 12rem;
 }
 
+p strong
+{
+    color: red;
+    text-decoration: underline red;
+}
+
