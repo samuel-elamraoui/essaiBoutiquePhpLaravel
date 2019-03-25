@@ -1,7 +1,7 @@
 @extends('masterAdmin')
 
 @section('title')
-    <h2>ETAT DES CATEGORIES</h2>
+    
 
 @endsection
 

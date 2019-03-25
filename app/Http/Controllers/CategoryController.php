@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-dd($request);
+
         $idDeMaCategorie = $request->input('categorie');
         $nouveauNom = $request->input ('name');
         $cat=Prd_category::find($idDeMaCategorie);
