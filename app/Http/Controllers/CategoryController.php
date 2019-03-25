@@ -15,9 +15,14 @@ class CategoryController extends Controller
         return view('category.addCategory', ['categories' => $categories]);
     }
 
-    public function create()
+    public function create(Request $request)
+
     {
-        return view('category.');
+        $categorie=new Prd_category;
+        $categorie->name=$request->name;
+        $categorie->save();
+
+        return view('category.createCategory',['newCategory' => $categorie]);
 
     }
 
@@ -26,9 +31,21 @@ class CategoryController extends Controller
         return view('category.');
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return view('category.');
+dd($request);
+        $idDeMaCategorie = $request->input('categorie');
+        $nouveauNom = $request->input ('name');
+        $cat=Prd_category::find($idDeMaCategorie);
+
+
+        $cats=Prd_category::find($idDeMaCategorie);
+
+            $cats->name=$nouveauNom;
+            $cats->save();
+
+
+        return view('category.modiCategory',['nouveauNom'=> $nouveauNom,'ancienNom'=>$cat]);
 
     }
 
@@ -37,6 +54,7 @@ class CategoryController extends Controller
         //initialisation de la variable '$idDeMaCategorie' qui recupere la donnee 'cstegorie'(=ID ds la table 'prd_categories
         //
         $idDeMaCategorie = $request->input('categorie');
+        $nomCat=Prd_category::find($idDeMaCategorie);
 
 //      dans $products j'apelle mon modele auquel j'applique une condition(WHERE)
 //      la methode cursor me permet de parcourir uniquement les enregistrement dont prd_category_id=$monID.
@@ -56,7 +74,7 @@ class CategoryController extends Controller
             $categorie->delete();
 
 
-            return view('category.ResultCategory');
+            return view('category.ResultCategory',['CategorieName'=>$nomCat]);
 
     }
 }
