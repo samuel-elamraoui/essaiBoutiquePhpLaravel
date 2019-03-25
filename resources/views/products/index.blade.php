@@ -15,6 +15,8 @@ Catalogue
     <a href="/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
     <a href="/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
     </div>
+    @php(dump(Session::all()))
+
 
     @foreach($produits as $produit)
             <div class="article">
@@ -34,6 +36,7 @@ Catalogue
 
         <br>
     @endforeach
+
 
 
 @endsection

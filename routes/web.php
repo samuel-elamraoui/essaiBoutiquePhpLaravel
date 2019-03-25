@@ -17,10 +17,9 @@ Route::get('/', function () {
 });
 
 /// route produit//////
-Route:: get('/produit','ProductController@index')->name('listeProduit');//route vers liste de produit/catalogue
+Route:: get('/produit','ProductController@index')->name('listeProduit');
 Route:: get('/produit/trierParPrix','ProductController@indexPrix');
 Route:: get('/produit/trierParNom','ProductController@indexNom');
-
 
 // route order
 Route::get('/commandes/recherche', 'ControllerOrder@search');
@@ -44,6 +43,7 @@ route::post('/basket/updateQty/{orderId}', 'ControllerBasket@updateQty')->name('
 route::get('/basket/update/','ControllerBasket@PanierAjour');
 route::post('/basket/validate/','ControllerBasket@validation')->name('basketValidate');
 
+
 Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
 Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
@@ -58,3 +58,22 @@ Route:: get('/admin/category', 'CategoryController@show');
 Route:: post('admin/ajout','CategoryController@create')->name('cat');
 Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
 Route:: post('admin/modif','CategoryController@update')->name('modifcat');
+=======
+////////// ADMIN
+///// PRODUCTS
+Route::get('/produit/creer','ProductController@create')->name('createPrd');
+Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
+Route::get('/produit/{productID}','ProductController@show')->name('fiche');
+
+///// STATISTIQUES
+Route::get('/admin/stats/stocks', 'StockController@stock');
+Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
+Route::get('/admin/stats/trafic', 'TraficController@trafic');
+
+///// category
+Route::get('/admin/category', 'CategoryController@show');
+Route::post('admin/ajout','CategoryController@create')->name('cat');
+Route::post('admin/suppression','CategoryController@delete')->name('supcat');
+Route::post('admin/modif','CategoryController@update')->name('modifcat');
+
+

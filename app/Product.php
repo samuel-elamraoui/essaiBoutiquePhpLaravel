@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     public $timestamps = false;
-
-
-    protected $table='products';
-
-    protected $table='products';     //designe la table qu'il utilise
     public function discount(){
         return $this->hasOne('App\discount');
     }

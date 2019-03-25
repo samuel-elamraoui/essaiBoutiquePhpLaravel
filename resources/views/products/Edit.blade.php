@@ -7,17 +7,23 @@
 @section('content')
 
     <h1>Formulaire de mise à jour d'un produit</h1>
+<diV>
 
+
+
+</diV>
     <form>
-        <div class="form-group">
-            <label for="Nom du produit">Nom du produit</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="BANANA">
+        <div>
 
-            <label for="Nom du produit">Nom du produit</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="BANANA">
+            <label for="namePrd">Nom du produit</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$produit->name}}">
 
-            <label for="Nom du produit">Nom du produit</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="BANANA">
+            <label for="pricePrd">Prix </label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{number_format((($produit -> price)/100), 2, ',', ' '). '€'}}">
+
+            <label for="desc">Description</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$produit->description}}">
+
         </div>
 
     </form>

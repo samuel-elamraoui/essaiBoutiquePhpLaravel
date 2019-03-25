@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\order_head;
 use Illuminate\Http\Request;
 
@@ -13,19 +14,23 @@ class ControllerOrder extends Controller
 
     function index (){
 
-        $order_heads = order_head::all();
-
-
-        return view('orders.index', ['order_heads' => $order_heads ]);
     }
+
     function reorder (){
         return view('orders.reorder');
     }
+
     function cancel(){
         return view('orders.cancel');
     }
 
     function testUrl($orderId){
         return view('orders.index', ['fromUrl' => $orderId]);
+    }
+
+    function show($id){
+        $commandes = Order::where('id', $id)->first();
+//        dd($commandes->delivery_cost);
+        return view('orders.index', ['order' => $commandes]);
     }
 }
