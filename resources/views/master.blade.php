@@ -16,7 +16,7 @@
 <body>
 
 
-<<<<<<<<< Temporary merge branch 1
+
 <nav>
     <ul class="nav">
         <li class="nav-item">
