@@ -33,6 +33,7 @@
             <a class="nav-link" href="/admin/stats/stocks">Stocks</a>
         </li>
 
+
     </ul>
 </nav>
 

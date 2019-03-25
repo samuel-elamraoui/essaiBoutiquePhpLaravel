@@ -29,4 +29,7 @@ class Order extends Model
     {
         return $this->belongsTo('App\Adress', 'adr_invoice', 'id');
     }
+
+
+
 }
