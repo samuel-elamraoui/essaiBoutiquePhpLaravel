@@ -17,6 +17,12 @@
     </div>
 
 
+    {{--{{$produit->name}}</br>--}}
+    {{--{{$produit->description}}</br>--}}
+    {{--{{$produit->price/100}} €</br>--}}
+    {{--{{asset('image/'.$produit -> imgUrl)}}</div>--}}
+
+
     <h1>LES STOCK</h1>
 
     <div class="progress">

@@ -17,6 +17,6 @@ class Prd_category extends Model
 
     }
 
-}}
+}
 
 
