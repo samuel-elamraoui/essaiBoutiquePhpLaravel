@@ -24,8 +24,7 @@ class ProductController extends Controller
     }
 
     //fonction tri prix croissants
-    public
-    function indexPrix()
+    public function indexPrix()
     {
 
         $products = product::orderby('price', 'desc')->get();  // requete pour trier les produits par ordre croissant
