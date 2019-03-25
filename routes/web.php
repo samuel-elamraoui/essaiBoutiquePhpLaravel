@@ -61,19 +61,20 @@ Route:: post('admin/modif','CategoryController@update')->name('modifcat');
 
 ////////// ADMIN
 ///// PRODUCTS
-Route::get('/produit/creer','ProductController@create')->name('createPrd');
-Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
-Route::get('/produit/{productID}','ProductController@show')->name('fiche');
+Route:: get('/produit/creer','ProductController@create')->name('createPrd');
+Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
+Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
 
 ///// STATISTIQUES
 Route::get('/admin/stats/stocks', 'StockController@stock');
 Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
 Route::get('/admin/stats/trafic', 'TraficController@trafic');
 
-///// category
-Route::get('/admin/category', 'CategoryController@show');
-Route::post('admin/ajout','CategoryController@create')->name('cat');
-Route::post('admin/suppression','CategoryController@delete')->name('supcat');
-Route::post('admin/modif','CategoryController@update')->name('modifcat');
-
+Route:: get('/produit/{productID}','ProductController@show')->name('fiche');
+//route vers fiche produit
+Route:: get('/admin','AdminController@index');
+Route:: get('/admin/category', 'CategoryController@show');
+Route:: post('admin/ajout','CategoryController@create')->name('cat');
+Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
+Route:: post('admin/modif','CategoryController@update')->name('modifcat');
 

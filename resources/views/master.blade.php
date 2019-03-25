@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
     <title>@yield('title')</title>
@@ -16,7 +18,6 @@
 <body>
 
 
-<<<<<<<<< Temporary merge branch 1
 <nav>
     <ul class="nav">
         <li class="nav-item">
@@ -36,7 +37,6 @@
         </li>
 
     </ul>
-
 </nav>
 
 <div class="flex-center position-ref full-height">
@@ -56,11 +56,11 @@
 
 
         <div class="content">
-        <div class="title m-b-md">
+
 
             @yield('content')
 
-        </div>
+
         </div>
 </div>
 </body>
