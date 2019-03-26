@@ -52,7 +52,8 @@ Route::post('admin/modif','CategoryController@update')->name('modifcat');
 Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
 Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
-Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
+Route::get('/produit/Suppression/{productID}/destroy','ProductController@destroy')->name('destroy');
+Route::get('/produit/Suppression/{productID}','ProductController@preDestroy')->name('preDestroy');
 Route::get('/admin/produit/creer','ProductController@create')->name('createPrd');
 Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
 

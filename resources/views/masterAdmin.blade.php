@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
-    <title>titre</title>
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -38,7 +38,6 @@
             @endauth
         </div>
     @endif
-        <div> @yield('title')  </div>
 
     <div class="content">
 

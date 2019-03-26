@@ -69,9 +69,17 @@ class ProductController extends Controller
         return view('products.Update');
     }
 
+    public function preDestroy($id)
+    {
+        $product= Product::find($id);
+        return view('products.Delete', ['produit' => $product]);
+    }
 
     public function destroy($id)
     {
+//        il faut ajouter le contrôle des commandes. Message d'erreur ou creation d'un statut
+//        de produit supprimé ?
+
         $product= Product::find($id);
         $product->delete();
         return redirect(route('adminProduit'));

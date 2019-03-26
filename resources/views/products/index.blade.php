@@ -36,7 +36,7 @@ Catalogue
                 @if ($content == 'master')
                     <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>
                 @else
-                    <a href="{{route('destroy',$produit->id)}}" class="article"> Supprimer </a>
+                    <a href="{{route('preDestroy',$produit->id)}}" class="article"> Supprimer </a>
                     <a href="{{route('edit',$produit->id)}}" class="article"> Modifier produit </a>
                 @endif
 
