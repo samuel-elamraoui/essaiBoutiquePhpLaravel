@@ -15,9 +15,12 @@ Catalogue
 
     <p>Classement par : </p>
     <div class="article">
-    <a href="/produit?sort=price&order=asc"><button type="button">Prix croissant</button> </a>
-    <a href="/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
-    <a href="/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
+        <a href="/produit?sort=price&order=asc"><button type="button">Prix croissant</button> </a>
+        <a href="/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
+        <a href="/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
+        @if ($content == 'masterAdmin')
+            <a href="/admin/produit/creer"><button type="button">Créer nouveau</button> </a>
+        @endif
     </div>
 
 

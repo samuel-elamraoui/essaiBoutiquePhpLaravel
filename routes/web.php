@@ -43,17 +43,17 @@ route::post('/basket/validate/','ControllerBasket@validation')->name('basketVali
 
 ////////// ADMIN
 Route::get('/admin','AdminController@index')->name('adminIndex');
-Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
 Route::get('/admin/category', 'CategoryController@show');
 Route::post('admin/ajout','CategoryController@create')->name('cat');
 Route::post('admin/suppression','CategoryController@delete')->name('supcat');
 Route::post('admin/modif','CategoryController@update')->name('modifcat');
 
 ///// PRODUCTS
+Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
 Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
 Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
-Route::get('/produit/creer','ProductController@create')->name('createPrd');
+Route::get('/admin/produit/creer','ProductController@create')->name('createPrd');
 Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
 
 ///// STATISTIQUES

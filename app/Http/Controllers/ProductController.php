@@ -49,12 +49,12 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->imgUrl=$request->imgUrl;
         $product->description=$request->description;
-        $product->poid=$request->weight;
+        $product->weight=$request->weight;
         $product->stock=$request->stock;
-        $product->idCategory=$request->prd_category_id;
+        $product->prd_category_id=$request->prd_category_id;
         $product->save();
 //
-        return redirect('\produit');
+        return redirect(route('adminProduit'));
     }
 
     public function show($id)
@@ -74,7 +74,7 @@ class ProductController extends Controller
     {
         $product= Product::find($id);
         $product->delete();
-        return redirect('/produit');
+        return redirect(route('adminProduit'));
     }
 
     public function edit($id)
