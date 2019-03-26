@@ -6,9 +6,15 @@ use App\Product;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 
 class ControllerBasket extends Controller{
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['validation', 'panier']);
+    }
 
     public function ajoutPanier(Request $request ,$id)
     {
@@ -93,7 +99,7 @@ class ControllerBasket extends Controller{
     }
 
     public function validation(Request $request){
-
+        
         $basket = Order::find($request->get('validate'));
         $basket->status = 'V';
         $basket->save();
