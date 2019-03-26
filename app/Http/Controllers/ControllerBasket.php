@@ -28,7 +28,17 @@ class ControllerBasket extends Controller{
     } else {
         $orderId = $request->session()->get('panier');
         $basket = Order::find($orderId);
-        $basket->products()->attach($id, ['quantity' => 1]);
+        $products = $basket->products;
+        $productAdded = Product::find($id);
+        foreach ($products as $product){
+            if ($product->id == $productAdded->id){
+                $qty = $product->pivot->quantity;
+                $basket->products()->detach($product->id);
+                $basket->products()->attach($product->id, ['quantity' => $qty + 1]);
+            } else {
+                $basket->products()->attach($id, ['quantity' => 1]);
+            }
+        }
     }
 
     return redirect(route('listeProduit'));
