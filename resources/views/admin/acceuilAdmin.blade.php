@@ -13,7 +13,7 @@
 
 
     <div class="products">
-        <button class="bouton">Gestion produit</button>
+        <a href="/admin/produit"><button class="bouton">Gestion produit</button></a>
 
     </div><br>
 
