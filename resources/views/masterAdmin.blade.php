@@ -15,7 +15,7 @@
 </head>
 <body>
 
-
+<h1>HELLO WORLD</h1>
 
 
 <div class="links">
@@ -45,13 +45,10 @@
 
     <div class="content">
 
-        <div class="title m-b-md">
 
             @yield('content')
-
-        </div>
     </div>
-
+</div>
 </body>
 </html>
 

@@ -75,6 +75,7 @@ Route:: get('/produit/{productID}','ProductController@show')->name('fiche');
 //route vers fiche produit
 
 Route:: get('/admin','AdminController@index')->name('adminIndex');
+Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
 Route:: get('/admin/category', 'CategoryController@show');
 Route:: post('admin/ajout','CategoryController@create')->name('cat');
 Route:: post('admin/suppression','CategoryController@delete')->name('supcat');

@@ -1,4 +1,6 @@
-@extends('master')
+
+    @extends($content)
+
 
 @section('title')
 Catalogue
@@ -8,6 +10,8 @@ Catalogue
 
 
     <h1>Catalogue</h1>
+
+
 
     <p>Classement par : </p>
     <div class="article">
@@ -26,9 +30,12 @@ Catalogue
 {{--                {{$produit->created_at}}<br>--}}
 {{--                {{$produit->updated_at}}--}}
                 <a href="{{route('fiche',$produit->id)}}" class="article"> Fiche produit </a>
-                <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>
-                <a href="{{route('destroy',$produit->id)}}" class="article"> Supprimer </a>
-                <a href="{{route('edit',$produit->id)}}" class="article"> Modifier produit </a>
+                @if ($content == 'master')
+                    <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>
+                @else
+                    <a href="{{route('destroy',$produit->id)}}" class="article"> Supprimer </a>
+                    <a href="{{route('edit',$produit->id)}}" class="article"> Modifier produit </a>
+                @endif
 
                {{--<a href="{{route('mise a jour',$produit->id)}}" class="border border-dark test"> Details </a>--}}
             </div>
