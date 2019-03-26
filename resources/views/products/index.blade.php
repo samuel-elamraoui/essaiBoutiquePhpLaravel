@@ -32,10 +32,11 @@ Catalogue
                 {{$produit->description}}<br>
 {{--                {{$produit->created_at}}<br>--}}
 {{--                {{$produit->updated_at}}--}}
-                <a href="{{route('fiche',$produit->id)}}" class="article"> Fiche produit </a>
                 @if ($content == 'master')
+                    <a href="{{route('fiche',$produit->id)}}" class="article"> Fiche produit </a>
                     <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>
                 @else
+                    <a href="{{route('adminFichePrd',$produit->id)}}" class="article"> Fiche produit </a>
                     <a href="{{route('preDestroy',$produit->id)}}" class="article"> Supprimer </a>
                     <a href="{{route('edit',$produit->id)}}" class="article"> Modifier produit </a>
                 @endif

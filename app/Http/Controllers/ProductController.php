@@ -57,10 +57,17 @@ class ProductController extends Controller
         return redirect(route('adminProduit'));
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $detail = product::find($id);
-        return view('products.product', ['produit' => $detail]);
+        $product = Product::find($id);
+
+        if ($request->path() == 'produit/'.$id){
+            $content = 'master';
+        } else {
+            $content = 'masterAdmin';
+        }
+
+        return view('products.product', ['produit' => $product, 'content'=>$content]);
     }
 
 

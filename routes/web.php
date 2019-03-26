@@ -50,6 +50,7 @@ Route::post('admin/modif','CategoryController@update')->name('modifcat');
 
 ///// PRODUCTS
 Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
+Route::get('/admin/produit/{productID}','ProductController@show')->name('adminFichePrd');
 Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
 Route::get('/produit/Suppression/{productID}/destroy','ProductController@destroy')->name('destroy');
