@@ -71,10 +71,16 @@ Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
 Route::get('/admin/stats/trafic', 'TraficController@trafic');
 
 Route:: get('/produit/{productID}','ProductController@show')->name('fiche');
+
 //route vers fiche produit
-Route:: get('/admin','AdminController@index');
+
+Route:: get('/admin','AdminController@index')->name('adminIndex');
 Route:: get('/admin/category', 'CategoryController@show');
 Route:: post('admin/ajout','CategoryController@create')->name('cat');
 Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
 Route:: post('admin/modif','CategoryController@update')->name('modifcat');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use Illuminate\Database\Eloquent\Collection;
+use Auth;
 
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index' ,'show']);
+    }
 
     public function index(Request $request)
     {
@@ -20,24 +26,6 @@ class ProductController extends Controller
             $order = $request->get('order');
         }
         $products = product::where('stock', '>',  0)->orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
-        return view('products.index', ['produits' => $products]);
-    }
-
-    //fonction tri prix croissants
-    public function indexPrix()
-    {
-
-        $products = product::orderby('price', 'desc')->get();  // requete pour trier les produits par ordre croissant
-
-        return view('products.index', ['produits' => $products]);
-    }
-
-     //fonction tri par nom
-    public function indexNom()
-    {
-
-        $products = product::orderby('name')->get();
-
         return view('products.index', ['produits' => $products]);
     }
 

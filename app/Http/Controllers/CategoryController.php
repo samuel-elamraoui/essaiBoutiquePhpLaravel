@@ -6,9 +6,15 @@ use App\Prd_category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Collection;
+use Auth;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
         $categories = Prd_category::all();

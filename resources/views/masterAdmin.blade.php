@@ -19,9 +19,8 @@
 
 
 <div class="links">
-    <a href="/">Home</a>
-    <a href="/produit">Catalogue</a>
-    <a href="/basket">Panier</a>
+    <a href="/">Home - client</a>
+    <a href="/admin">Home - admin</a>
 
     {{--<a href="https://nova.laravel.com">Nova</a>--}}
     {{--<a href="https://forge.laravel.com">Forge</a>--}}
