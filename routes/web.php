@@ -30,7 +30,7 @@ Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
 //// USER
 Route::get('/users/creation', 'ControllerUsers@create')->name('userCreate');
-Route::get('/users', 'ControllerUsers@confirmSave');
+Route::post('/users/store', 'ControllerUsers@store')->name('userStore');
 Route::get('/users/connexion', 'ControllerUsers@login');
 
 ///Basket
