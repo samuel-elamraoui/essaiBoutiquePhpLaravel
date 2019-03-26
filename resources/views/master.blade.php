@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<h1>HELLO WORLD u jhdsq hgfdqlkjhds</h1>
+
 <nav>
     <ul class="nav">
         <li class="nav-item">

@@ -15,9 +15,6 @@
 </head>
 <body>
 
-<h1>HELLO WORLD</h1>
-
-
 <div class="links">
     <a href="/">Home - client</a>
     <a href="/admin">Home - admin</a>
