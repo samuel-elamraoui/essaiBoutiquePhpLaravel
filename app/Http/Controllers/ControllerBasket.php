@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class ControllerBasket extends Controller{
 
     public function ajoutPanier(Request $request ,$id)
-{
+    {
     if ( ! $request->session()->has('panier')) {
         $basket = new Order;
         $basket->date_order = '2019-03-19';
@@ -32,11 +32,6 @@ class ControllerBasket extends Controller{
     }
 
     return redirect(route('listeProduit'));
-}
-
-    public function store()
-    {
-        return view('basket.index');
     }
 
     public function suppLine(Request $request, $id)
@@ -99,7 +94,4 @@ class ControllerBasket extends Controller{
         return view('basket.validate', ['orderId' => $orderId]);
       }
 
-    public function PanierAjour(){
-        return view ('basket.Post_index');
-    }
 }

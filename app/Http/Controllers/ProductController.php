@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $produit = Productlist::find($id);
+        $produit = Product::find($id);
         return view('products.Edit', [
             'produit' => $produit]);
     }
