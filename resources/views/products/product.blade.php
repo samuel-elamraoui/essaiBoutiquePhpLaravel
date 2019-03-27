@@ -1,4 +1,4 @@
-@extends('master')
+@extends($content)
 
 @section('title')
 
@@ -7,12 +7,12 @@
 @section('content')
 
 
+    <h1>fiche produit</h1>
 
     <div class="article">
-        <h1>fiche produit</h1>
-        {{$produit->name}}<br>
-        {{number_format((($produit -> price)/100), 2, ',', ' '). '€'}}
         <img src="{{asset('image/'.$produit -> imgUrl)}}" alt="{{asset('image/'.$produit -> imgUrl)}}" class="photo">
+        {{$produit->name}}<br>
+        {{number_format((($produit -> price)/100), 2, ',', ' '). '€'}}<br>
         {{$produit->description}}<br>
     </div>
 

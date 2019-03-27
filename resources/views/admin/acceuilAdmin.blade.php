@@ -13,7 +13,7 @@
 
 
     <div class="products">
-        <button class="bouton">Gestion produit</button>
+        <a href="/admin/produit"><button class="bouton">Gestion produit</button></a>
 
     </div><br>
 
@@ -28,6 +28,10 @@
 
     <div class="category">
         <a href="/admin/category"> <button class="bouton">Gestion des catégories</button></a>
+    </div>
+
+    <div class="stock">
+        <a href="/admin/stats/stock"> <button class="bouton">statistiques de stock</button></a>
     </div>
 
 

@@ -6,6 +6,7 @@
 
 @section('content')
 
-    <h1>Mise ne base de données du User</h1>
+    <h1>Création du client {{$customerName}} OK <a href="/produit"> retour au catalogue</a></h1>
+
 
 @endsection

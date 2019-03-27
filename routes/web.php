@@ -17,9 +17,8 @@ Route::get('/', function () {
 });
 
 /// route produit//////
-Route:: get('/produit','ProductController@index')->name('listeProduit');
-Route:: get('/produit/trierParPrix','ProductController@indexPrix');
-Route:: get('/produit/trierParNom','ProductController@indexNom');
+Route::get('/produit','ProductController@index')->name('listeProduit');
+Route::get('/produit/{productID}','ProductController@show')->name('fiche');
 
 // route order
 Route::get('/commandes/recherche', 'ControllerOrder@search');
@@ -31,7 +30,7 @@ Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
 //// USER
 Route::get('/users/creation', 'ControllerUsers@create')->name('userCreate');
-Route::get('/users', 'ControllerUsers@confirmSave');
+Route::post('/users/store', 'ControllerUsers@store')->name('userStore');
 Route::get('/users/connexion', 'ControllerUsers@login');
 
 ///Basket
@@ -40,41 +39,31 @@ route::post('/basket/delete','ControllerBasket@supprimPanier')->name('delBasket'
 route::post('/basket/deleteLine/{productId}','ControllerBasket@suppLine')->name('suppLine');
 route::get('/basket','ControllerBasket@panier')->name('basket');
 route::post('/basket/updateQty/{orderId}', 'ControllerBasket@updateQty')->name('updateQty');
-route::get('/basket/update/','ControllerBasket@PanierAjour');
 route::post('/basket/validate/','ControllerBasket@validation')->name('basketValidate');
 
-
-Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
-Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
-Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
-
-///admin
-Route:: get('/produit/creer','ProductController@create')->name('createPrd');
-Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
-Route:: get('/produit/{productID}','ProductController@show')->name('fiche');
-//route vers fiche produit
-Route:: get('/admin','AdminController@index');
-Route:: get('/admin/category', 'CategoryController@show');
-Route:: post('admin/ajout','CategoryController@create')->name('cat');
-Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
-Route:: post('admin/modif','CategoryController@update')->name('modifcat');
-
 ////////// ADMIN
+Route::get('/admin','AdminController@index')->name('adminIndex');
+Route::get('/admin/category', 'CategoryController@show');
+Route::post('admin/ajout','CategoryController@create')->name('cat');
+Route::post('admin/suppression','CategoryController@delete')->name('supcat');
+Route::post('admin/modif','CategoryController@update')->name('modifcat');
+
 ///// PRODUCTS
-Route:: get('/produit/creer','ProductController@create')->name('createPrd');
-Route:: post('/produit/Sauvegarde','ProductController@store')->name('addProd');
-Route:: get('/produit/{productID}','ProductController@show')->name('fiche'); //route vers fiche produit
+Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
+Route::get('/admin/produit/creer','ProductController@create')->name('creerProduit');
+Route::get('/admin/produit/{productID}','ProductController@show')->name('adminFichePrd');
+Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
+Route::get('/produit/Suppression/{productID}/destroy','ProductController@destroy')->name('destroy');
+Route::get('/produit/Suppression/{productID}','ProductController@preDestroy')->name('preDestroy');
+Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
+Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
 
 ///// STATISTIQUES
 Route::get('/admin/stats/stocks', 'StockController@stock');
 Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
 Route::get('/admin/stats/trafic', 'TraficController@trafic');
 
-Route:: get('/produit/{productID}','ProductController@show')->name('fiche');
-//route vers fiche produit
-Route:: get('/admin','AdminController@index');
-Route:: get('/admin/category', 'CategoryController@show');
-Route:: post('admin/ajout','CategoryController@create')->name('cat');
-Route:: post('admin/suppression','CategoryController@delete')->name('supcat');
-Route:: post('admin/modif','CategoryController@update')->name('modifcat');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use Illuminate\Database\Eloquent\Collection;
+use Auth;
 
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index' ,'show']);
+    }
 
     public function index(Request $request)
     {
@@ -20,25 +26,13 @@ class ProductController extends Controller
             $order = $request->get('order');
         }
         $products = product::where('stock', '>',  0)->orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
-        return view('products.index', ['produits' => $products]);
-    }
+        if ($request->path()== 'produit'){
+            $content = 'master';
+        } else {
+           $content = 'masterAdmin';
+        }
 
-    //fonction tri prix croissants
-    public function indexPrix()
-    {
-
-        $products = product::orderby('price', 'desc')->get();  // requete pour trier les produits par ordre croissant
-
-        return view('products.index', ['produits' => $products]);
-    }
-
-     //fonction tri par nom
-    public function indexNom()
-    {
-
-        $products = product::orderby('name')->get();
-
-        return view('products.index', ['produits' => $products]);
+        return view('products.index', ['produits' => $products, 'content'=>$content]);
     }
 
 
@@ -55,18 +49,26 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->imgUrl=$request->imgUrl;
         $product->description=$request->description;
-        $product->poid=$request->weight;
+        $product->weight=$request->weight;
         $product->stock=$request->stock;
-        $product->idCategory=$request->prd_category_id;
+        $product->prd_category_id=$request->prd_category_id;
         $product->save();
 //
-        return redirect('\produit');
+        return redirect(route('adminProduit'));
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $detail = product::find($id);
-        return view('products.product', ['produit' => $detail]);
+
+        $product = Product::find($id);
+
+        if ($request->path() == 'produit/'.$id){
+            $content = 'master';
+        } else {
+            $content = 'masterAdmin';
+        }
+
+        return view('products.product', ['produit' => $product, 'content'=>$content]);
     }
 
 
@@ -75,17 +77,25 @@ class ProductController extends Controller
         return view('products.Update');
     }
 
+    public function preDestroy($id)
+    {
+        $product= Product::find($id);
+        return view('products.Delete', ['produit' => $product]);
+    }
 
     public function destroy($id)
     {
+//        il faut ajouter le contrôle des commandes. Message d'erreur ou creation d'un statut
+//        de produit supprimé ?
+
         $product= Product::find($id);
         $product->delete();
-        return redirect('/produit');
+        return redirect(route('adminProduit'));
     }
 
     public function edit($id)
     {
-        $produit = Productlist::find($id);
+        $produit = Product::find($id);
         return view('products.Edit', [
             'produit' => $produit]);
     }

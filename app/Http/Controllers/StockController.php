@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -45,7 +46,7 @@ class StockController extends Controller
      */
     public function show($id)
     {
-        $detail = productlist::find($id);
+        $detail = Product::find($id);
         return view('products.product', ['produit' => $detail]);
     }
 

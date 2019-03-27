@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
-    <title>titre</title>
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -15,13 +15,9 @@
 </head>
 <body>
 
-
-
-
 <div class="links">
-    <a href="/">Home</a>
-    <a href="/produit">Catalogue</a>
-    <a href="/basket">Panier</a>
+    <a href="/">Home - client</a>
+    <a href="/admin">Home - admin</a>
 
     {{--<a href="https://nova.laravel.com">Nova</a>--}}
     {{--<a href="https://forge.laravel.com">Forge</a>--}}
@@ -42,17 +38,13 @@
             @endauth
         </div>
     @endif
-        <div> @yield('title')  </div>
 
     <div class="content">
 
-        <div class="title m-b-md">
 
             @yield('content')
-
-        </div>
     </div>
-
+</div>
 </body>
 </html>
 

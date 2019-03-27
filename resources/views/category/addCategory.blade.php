@@ -1,4 +1,4 @@
-@extends('master')
+@extends('masterAdmin')
 
 @section('title')
     <h1>Gestion Categories</h1>

@@ -10,23 +10,23 @@
 </header>
 
 
-<form method ="post" action={{route('addProd')}}>
+<form method ="post" action="{{route('addProd')}}">
 {{csrf_field()}}
 
   <div >
     <div class="form-group">
         <label>nom du produit</label>
-        <input type="text" class="form-control" name="nom" placeholder="nom">
+        <input type="text" class="form-control" name="name" placeholder="nom">
     </div>
 
     <div class="form-group">
         <label>prix du produit</label>
-        <input type="number" class="form-control" name="prix" placeholder="prix">
+        <input type="number" class="form-control" name="price" placeholder="prix">
     </div>
 
     <div class="form-group">
         <label>image produit</label>
-        <input type="image" class="form-control" name="image" placeholder="image">
+        <input type="text" class="form-control" name="imgUrl" placeholder="image">
     </div>
 
     <div class="form-group">
@@ -36,7 +36,7 @@
 
     <div class="form-group">
         <label>poid</label>
-        <input type="number" class="form-control" name="poid" placeholder="poid">
+        <input type="number" class="form-control" name="weight" placeholder="poid">
     </div>
 
     <div class="form-group">
@@ -46,7 +46,7 @@
 
     <div class="form-group">
         <label>categorie</label>
-        <input type="text" class="form-control" name="ID_category" placeholder="ID_category">
+        <input type="text" class="form-control" name="prd_category_id" placeholder="ID_category">
     </div>
 
 

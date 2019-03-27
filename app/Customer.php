@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class customer extends Model
 {
+    public $timestamps = false;
+
     public function order()
     {
         return $this->hasMany('App\Order');
