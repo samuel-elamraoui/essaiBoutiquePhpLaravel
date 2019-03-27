@@ -65,11 +65,24 @@ p strong
 .bouton {
     width: 900px;
     height: 150px;
-    background-color: deepskyblue;
     font-size: 30px;
+    align-items: center;
+    background-color: #FFF;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0px 1px 5px;
+
 }
 .acceuil{
     font-size: 40px;
-    color: greenyellow;
+
+}
+
+.form-prd {
+    align-items: center;
+    background-color: #FFF;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0px 1px 5px;
 }
 

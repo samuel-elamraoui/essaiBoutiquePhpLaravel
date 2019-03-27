@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     public $timestamps = false;
+
+    protected $fillable = ['name', 'description', 'price'];
+
     public function discount(){
         return $this->hasOne('App\discount');
     }

@@ -72,8 +72,15 @@ class ProductController extends Controller
     }
 
 
-    public function update()
+    public function update(Request $request, $productID)
     {
+
+        $data = $request->all();
+        $data['price'] = $data['price'] * 100;
+
+        $produit = Product::find($productID);
+        $produit->update($data);
+
         return view('products.Update');
     }
 
@@ -95,7 +102,9 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+
         $produit = Product::find($id);
+//        dd($data);
         return view('products.Edit', [
             'produit' => $produit]);
     }
