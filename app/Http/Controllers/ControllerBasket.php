@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 
 class ControllerBasket extends Controller{
+
+
+    public function __construct()
+    {
+        $this->middleware('userBasket')->only('validation');
+    }
 
     public function ajoutPanier(Request $request ,$id)
     {
@@ -93,5 +100,7 @@ class ControllerBasket extends Controller{
 
         return view('basket.validate', ['orderId' => $orderId]);
       }
-
+     public function log(){
+        return view('auth.logRegister');
+     }
 }

@@ -41,27 +41,27 @@ route::get('/basket','ControllerBasket@panier')->name('basket');
 route::post('/basket/updateQty/{orderId}', 'ControllerBasket@updateQty')->name('updateQty');
 route::post('/basket/validate/','ControllerBasket@validation')->name('basketValidate');
 
-////////// ADMIN
-Route::get('/admin','AdminController@index')->name('adminIndex');
-Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
-Route::get('/admin/category', 'CategoryController@show');
-Route::post('admin/ajout','CategoryController@create')->name('cat');
-Route::post('admin/suppression','CategoryController@delete')->name('supcat');
-Route::post('admin/modif','CategoryController@update')->name('modifcat');
 
-///// PRODUCTS
-Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
-Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
-Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
-Route::get('/produit/creer','ProductController@create')->name('createPrd');
-Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
-
-///// STATISTIQUES
-Route::get('/admin/stats/stocks', 'StockController@stock');
-Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
-Route::get('/admin/stats/trafic', 'TraficController@trafic');
-
+Route::get('/log','ControllerBasket@log')->name('log');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('is_admin')->group(function(){
+    Route::get('/admin','AdminController@index')->name('adminIndex');
+    Route::get('/admin/produit','ProductController@index')->name('adminProduit')->middleware('auth');
+    Route::get('/admin/category', 'CategoryController@show');
+    Route::post('admin/ajout','CategoryController@create')->name('cat');
+    Route::post('admin/suppression','CategoryController@delete')->name('supcat');
+    Route::post('admin/modif','CategoryController@update')->name('modifcat');
+    Route::get('/admin/stats/stocks', 'StockController@stock');
+    Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
+    Route::get('/admin/stats/trafic', 'TraficController@trafic');
+    Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
+    Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
+    Route::get('/produit/Suppression/{productID}','ProductController@destroy')->name('destroy');
+    Route::get('/produit/creer','ProductController@create')->name('createPrd');
+    Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
+
+});
