@@ -19,6 +19,9 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
+
+
+//        pour afficher la meme vue avec 2 pages differentes.
         $sort = "name";
         $order = "asc";
         if (null !== $request->get('sort') && (null !== $request->get('order'))) {
@@ -26,6 +29,7 @@ class ProductController extends Controller
             $order = $request->get('order');
         }
         $products = product::where('stock', '>',  0)->orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
+
         if ($request->path()== 'produit'){
             $content = 'master';
         } else {
@@ -34,7 +38,6 @@ class ProductController extends Controller
 
         return view('products.index', ['produits' => $products, 'content'=>$content]);
     }
-
 
     public function create()
     {
