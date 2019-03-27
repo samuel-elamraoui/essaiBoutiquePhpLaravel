@@ -59,6 +59,7 @@ class ProductController extends Controller
 
     public function show(Request $request, $id)
     {
+
         $product = Product::find($id);
 
         if ($request->path() == 'produit/'.$id){

@@ -10,7 +10,7 @@
 </header>
 
 
-<form method ="post" action={{route('addProd')}}>
+<form method ="post" action="{{route('addProd')}}">
 {{csrf_field()}}
 
   <div >

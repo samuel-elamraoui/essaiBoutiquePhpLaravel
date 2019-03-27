@@ -19,7 +19,7 @@ Catalogue
         <a href="/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
         <a href="/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
         @if ($content == 'masterAdmin')
-            <a href="/admin/produit/creer"><button type="button">Créer nouveau</button> </a>
+            <a href="{{route('creerProduit')}}"><button type="button">Créer nouveau</button></a>
         @endif
     </div>
 
