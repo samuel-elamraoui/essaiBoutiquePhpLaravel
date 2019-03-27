@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Order;
+use App\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Auth;
 
@@ -25,27 +25,20 @@ class ControllerBasket extends Controller{
         $basket->date_order = '2019-03-19';
         $basket->status = 'P';
         $basket->delivery_cost = 0;
-        $basket->adr_delivery = 17;
-        $basket->adr_invoice = 17;
-        $basket->customer_id = 7;
         $basket->save();
 
         $basket->products()->attach($id, ['quantity' => 1]);
 
         Session::put('panier', $basket->id);
     } else {
-        $orderId = $request->session()->get('panier');
-        $basket = Order::find($orderId);
-        $products = $basket->products;
-        $productAdded = Product::find($id);
-        foreach ($products as $product){
-            if ($product->id == $productAdded->id){
-                $qty = $product->pivot->quantity;
-                $basket->products()->detach($product->id);
-                $basket->products()->attach($product->id, ['quantity' => $qty + 1]);
-            } else {
-                $basket->products()->attach($id, ['quantity' => 1]);
-            }
+        $basket = Order::find($request->session()->get('panier'));
+        $foundProduct = $basket->products->firstWhere('id', $id);
+
+        if($foundProduct) {
+            $qty = $foundProduct->pivot->quantity;
+            $basket->products()->updateExistingPivot($foundProduct->id, ['quantity' => $qty + 1]);
+        } else {
+            $basket->products()->attach($id, ['quantity' => 1]);
         }
     }
 
@@ -96,6 +89,8 @@ class ControllerBasket extends Controller{
 
         $noMajs = $request->session()->get('noMaj');
         $request->session()->forget('noMaj');
+        Session::put('lastRoute', '/basket');
+
 
         return view ('basket.index', ['panier' => $basket], ['noMajs' => $noMajs]);
     }

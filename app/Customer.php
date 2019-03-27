@@ -17,4 +17,9 @@ class customer extends Model
     {
         return $this->hasMany('App\Adress');
     }
+
+    public function user_id()
+    {
+        return $this->hasMany('App\User');
+    }
 }

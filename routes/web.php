@@ -39,7 +39,7 @@ route::post('/basket/delete','ControllerBasket@supprimPanier')->name('delBasket'
 route::post('/basket/deleteLine/{productId}','ControllerBasket@suppLine')->name('suppLine');
 route::get('/basket','ControllerBasket@panier')->name('basket');
 route::post('/basket/updateQty/{orderId}', 'ControllerBasket@updateQty')->name('updateQty');
-route::post('/basket/validate/','ControllerBasket@validation')->name('basketValidate');
+route::post('/basket/validate/','ControllerBasket@validation')->name('basketValidate')->middleware('CheckCustomer');
 
 ////////// ADMIN
 Route::get('/admin','AdminController@index')->name('adminIndex');

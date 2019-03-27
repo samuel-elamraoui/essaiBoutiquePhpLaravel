@@ -15,7 +15,7 @@
     @php($totalPanier=0)
 
     {{--*********en-tête du panier*********--}}
-    {{$panier->customer->last_name}} {{$panier->customer->first_name}}<br/>
+{{--    {{$panier->customer->last_name}} {{$panier->customer->first_name}}<br/>--}}
     Panier n° {{$panier->id}} du {{$panier->date_order}}<br/>
 
     <form action="{{route('updateQty', $panier->id)}}" method="post" id="recalcul">

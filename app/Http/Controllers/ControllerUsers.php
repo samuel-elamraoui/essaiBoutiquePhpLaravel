@@ -11,7 +11,7 @@ use App\Adress;
 class ControllerUsers extends Controller
 
 {
-    public function create(){
+    public function create(Request $request){
 
         return view('user.create');
     }
@@ -36,8 +36,11 @@ class ControllerUsers extends Controller
         $adress->customer_id= $customer->id;
         $adress->save();
 
-
-        return view('user.confirmSave', ['customerName' => $customer->last_name]);
+        if ($request->session()->get('lastRoute')){
+            return redirect(route('basket'));
+        } else {
+            return view('user.confirmSave', ['customerName' => $customer->last_name], ['lastRoute' => $request->session()->get('lastRoute')]);
+        }
     }
 
     public function login (){
