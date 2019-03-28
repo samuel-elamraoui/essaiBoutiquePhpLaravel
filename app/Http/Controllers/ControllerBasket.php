@@ -101,7 +101,7 @@ class ControllerBasket extends Controller{
         $basket->status = 'V';
         $basket->adr_delivery = $request->session()->get('adressId');
         $basket->adr_invoice = $request->session()->get('adressId');
-        $basket->customer_id = $request->session()->get('customerID');
+        $basket->customer_id = $request->session()->get('customerId');
         $basket->save();
 
         $orderId = $request->session()->get('panier');
@@ -109,6 +109,10 @@ class ControllerBasket extends Controller{
         $request->session()->forget('panier');
         $request->session()->forget('adressId');
         $request->session()->forget('customerId');
+        if ($request->session()->has('lastRoute')){
+            $request->session()->forget('lastRoute');
+        }
+        
 
         return view('basket.validate', ['orderId' => $orderId]);
       }
