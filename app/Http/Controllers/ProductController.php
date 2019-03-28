@@ -28,7 +28,6 @@ class ProductController extends Controller
             $sort = $request->get('sort');
             $order = $request->get('order');
         }
-        $products = product::where('stock', '>',  0)->orderby("$sort", "$order")->get(); //requete pour afficher tous mes articles
 
         if ($request->path()== 'produit'){
             $content = 'master';

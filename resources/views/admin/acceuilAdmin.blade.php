@@ -22,7 +22,7 @@
     </div><br>
 
     <div class="order">
-        <button class="bouton">Gestion des commandes</button>
+        <a href="{{route('orderList')}}"><button class="bouton">Gestion des commandes</button></a>
 
     </div><br>
 

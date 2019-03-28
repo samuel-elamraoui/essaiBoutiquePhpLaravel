@@ -80,4 +80,6 @@ Route::middleware('is_admin')->group(function(){
     Route::get('/admin/produit/Suppression/{productID}/destroy','ProductController@destroy')->name('destroy');
     Route::get('/admin/produit/creer','ProductController@create')->name('createPrd');
     Route::post('/admin/produit/Sauvegarde','ProductController@store')->name('addProd');
+    Route::get('/admin/commandes/', 'ControllerOrder@index')->name('orderList');
+    Route::get('/admin/commandes/{orderId}', 'ControllerOrder@show')->name('detailOrder');
 });

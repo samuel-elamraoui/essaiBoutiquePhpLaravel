@@ -39,6 +39,14 @@ html, body {
     margin: 20px 40px 10px 40px;
 }
 
+.commande{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
 .m-b-md {
 
     margin-bottom: 30px;

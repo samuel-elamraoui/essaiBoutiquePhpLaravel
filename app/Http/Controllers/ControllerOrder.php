@@ -12,8 +12,16 @@ class ControllerOrder extends Controller
         return view('orders.search');
     }
 
-    function index (){
-
+    function index (Request $request)
+    {
+        $sort = "id";
+        $order = "desc";
+        if (null !== $request->get('sort') && (null !== $request->get('order'))) {
+            $sort = $request->get('sort');
+            $order = $request->get('order');
+        }
+        $orders = Order::orderby("$sort", "$order")->get();
+        return view('orders.list', ['orders' => $orders]);
     }
 
     function reorder (){
