@@ -19,9 +19,6 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-
-
-//        pour afficher la meme vue avec 2 pages differentes.
         $sort = "name";
         $order = "asc";
         if (null !== $request->get('sort') && (null !== $request->get('order'))) {
@@ -75,8 +72,18 @@ class ProductController extends Controller
         return view('products.product', ['produit' => $product, 'content'=>$content]);
     }
 
-    public function update()
+
+    public function update(Request $request, $productID)
     {
+
+
+
+        $data = $request->all();
+        $data['price'] = $data['price'] * 100;
+
+        $produit = Product::find($productID);
+        $produit->update($data);
+
         return view('products.Update');
     }
 
@@ -88,6 +95,9 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+//        il faut ajouter le contrôle des commandes. Message d'erreur ou creation d'un statut
+//        de produit supprimé ?
+
         $product= Product::find($id);
         if (isset($product->orders[0])){
             $product->status = 'S';

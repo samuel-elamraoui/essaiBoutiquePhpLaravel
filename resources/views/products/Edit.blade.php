@@ -1,30 +1,35 @@
 @extends('masterAdmin')
 
 @section('title')
-   modifier un  produit
+   modifier un produit
 @endsection
 
 @section('content')
 
     <h1>Formulaire de mise à jour d'un produit</h1>
-<diV>
 
-
-
-</diV>
-    <form>
-        <div>
+    <form class="form-prd" action="{{route ('update', ['productID'=>$produit->id])}}" method="post">
+        @method('put')
+        @csrf
 
             <label for="namePrd">Nom du produit</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$produit->name}}">
+            <input type="text" name="name" class="form-control" value="{{$produit->name}}">
 
-            <label for="pricePrd">Prix </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{number_format((($produit -> price)/100), 2, ',', ' '). '€'}}">
+            <label for="pricePrd">Prix</label>
+            <input type="text" name="price" class="form-control" value="{{number_format($produit -> price/100, 2, '.', '')}}">
 
             <label for="desc">Description</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$produit->description}}">
+            <input type="text" name="description" class="form-control" value="{{$produit->description}}">
 
-        </div>
+            <label for="stock">Stock</label>
+            <input type="text" name="stock" class="form-control" value="{{$produit->stock}}">
+
+            <label for="imgUrl">Url de l'image</label>
+            <input type="text" name="imgUrl" class="form-control" value="{{$produit->imgUrl}}">
+
+            <br>
+
+            <input type="submit" value="Modifier">
 
     </form>
 
