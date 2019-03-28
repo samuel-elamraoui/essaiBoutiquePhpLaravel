@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Order;
 use App\Customer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Auth;
@@ -22,7 +23,7 @@ class ControllerBasket extends Controller{
     {
     if ( ! $request->session()->has('panier')) {
         $basket = new Order;
-        $basket->date_order = '2019-03-19';
+        $basket->date_order = Carbon::now()->format('Y-m-d');
         $basket->status = 'P';
         $basket->delivery_cost = 0;
         $basket->save();
