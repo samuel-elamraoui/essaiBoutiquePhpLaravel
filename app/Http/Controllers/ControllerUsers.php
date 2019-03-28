@@ -50,6 +50,11 @@ class ControllerUsers extends Controller
         return view('user.login');
     }
 
+    public function myAccount()
+    {
+        return redirect(route('home'));
+    }
+
 }
 
 

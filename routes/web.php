@@ -12,6 +12,7 @@
 */
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,6 +30,7 @@ Route::get('/commandes/annuler/{nom}', 'ControllerOrder@cancelUrl');
 Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 
 //// USER
+Route::post('/user', 'ControllerUsers@myAccount')->name('myAccount');
 Route::get('/users/creation', 'ControllerUsers@create')->name('userCreate');
 Route::post('/users/store', 'ControllerUsers@store')->name('userStore');
 Route::get('/users/connexion', 'ControllerUsers@login');

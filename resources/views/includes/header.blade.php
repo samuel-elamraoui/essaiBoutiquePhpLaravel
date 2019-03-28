@@ -44,6 +44,16 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
+
+                        <a class="dropdown-item" href="{{ route('myAccount') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('myAccount').submit();">
+                            {{ __('Mon Compte') }}
+                        </a>
+
+                        <form id="myAccount" action="{{ route('myAccount') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </li>
             @endguest
@@ -51,7 +61,7 @@
                 @if (Route::has('login'))
                     <div class="top-right links">
                         @auth
-                            {{--<a href="{{ url('/home') }}">Home</a>--}}
+{{--                            <a href="{{ url('/home') }}">Home</a>--}}
                         @else
                             <a href="{{ route('login') }}">Login</a>
 
