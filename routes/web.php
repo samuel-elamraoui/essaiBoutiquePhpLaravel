@@ -82,4 +82,6 @@ Route::middleware('is_admin')->group(function(){
     Route::post('/admin/produit/Sauvegarde','ProductController@store')->name('addProd');
     Route::get('/admin/commandes/', 'ControllerOrder@index')->name('orderList');
     Route::get('/admin/commandes/{orderId}', 'ControllerOrder@show')->name('detailOrder');
+    Route::get('/admin/commandes/{orderId}/predestroy', 'ControllerOrder@preDestroy')->name('preDestroyOrder');
+    Route::get('/admin/commandes/{orderId}/destroy', 'ControllerOrder@destroy')->name('destroyOrder');
 });

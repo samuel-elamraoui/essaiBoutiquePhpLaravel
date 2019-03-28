@@ -24,7 +24,11 @@
             <a href="{{route('detailOrder', $order->id)}}">
                 <button type="submit" name="detailOrder" value="{{$order->id}}">details</button><br/>
             </a>
-            <button type="submit" name="suppOrder" value="{{$order->id}}">Supprimer</button><br/>
+            @if($order->status == 'P' && $order->date_order < $today)
+                <a href="{{route('preDestroyOrder', $order->id)}}">
+                    <button type="submit" name="suppOrder" value="{{$order->id}}">Supprimer</button>
+                </a><br/>
+            @endif
         </div>
     @endforeach
 
