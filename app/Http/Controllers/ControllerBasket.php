@@ -95,14 +95,20 @@ class ControllerBasket extends Controller{
         return view ('basket.index', ['panier' => $basket], ['noMajs' => $noMajs]);
     }
 
-    public function validation(Request $request){
-
+    public function validation(Request $request)
+    {
         $basket = Order::find($request->get('validate'));
         $basket->status = 'V';
+        $basket->adr_delivery = $request->session()->get('adressId');
+        $basket->adr_invoice = $request->session()->get('adressId');
+        $basket->customer_id = $request->session()->get('customerID');
         $basket->save();
 
         $orderId = $request->session()->get('panier');
+
         $request->session()->forget('panier');
+        $request->session()->forget('adressId');
+        $request->session()->forget('customerId');
 
         return view('basket.validate', ['orderId' => $orderId]);
       }

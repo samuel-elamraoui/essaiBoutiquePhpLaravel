@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Customer;
 use App\Adress;
+use Illuminate\Support\Facades\Session;
 
 class ControllerUsers extends Controller
 
@@ -37,6 +38,8 @@ class ControllerUsers extends Controller
         $adress->save();
 
         if ($request->session()->get('lastRoute')){
+            Session::put('customerId', $customer->id);
+            Session::put('adressId', $adress->id);
             return redirect(route('basket'));
         } else {
             return view('user.confirmSave', ['customerName' => $customer->last_name], ['lastRoute' => $request->session()->get('lastRoute')]);

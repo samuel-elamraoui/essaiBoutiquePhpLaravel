@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Customer;
+use Illuminate\Support\Facades\Session;
+
 
 class CheckCustomer
 {
@@ -17,10 +18,12 @@ class CheckCustomer
      */
     public function handle($request, Closure $next)
     {
-        $customers = Customer::where('user_id', Auth::id())->get();
-        $foundCustomer = $customers->firstWhere('user_id', Auth::id());
-        if ($foundCustomer){
-//            dd($request);
+        $customer = Auth::user()->customers()->first();
+        if ($customer){
+            $adress = $customer->adress()->first();
+
+            Session::put('customerId', $customer->id);
+            Session::put('adressId', $adress->id);
             return $next($request);
         } else {
             return redirect(route('userCreate'));
