@@ -32,8 +32,10 @@ class ProductController extends Controller
 
         if ($request->path()== 'produit'){
             $content = 'master';
+            $products = product::where('stock', '>',  0)->where('status', 'D')->orderby("$sort", "$order")->get();
         } else {
            $content = 'masterAdmin';
+            $products = product::where('status', 'D')->orderby("$sort", "$order")->get();
         }
 
         return view('products.index', ['produits' => $products, 'content'=>$content]);
@@ -74,7 +76,6 @@ class ProductController extends Controller
         return view('products.product', ['produit' => $product, 'content'=>$content]);
     }
 
-
     public function update()
     {
         return view('products.Update');
@@ -88,11 +89,14 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-//        il faut ajouter le contrôle des commandes. Message d'erreur ou creation d'un statut
-//        de produit supprimé ?
-
         $product= Product::find($id);
-        $product->delete();
+        if (isset($product->orders[0])){
+            $product->status = 'S';
+            $product->save();
+        } else {
+            $product->delete();
+        }
+
         return redirect(route('adminProduit'));
     }
 

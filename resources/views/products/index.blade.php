@@ -15,11 +15,15 @@ Catalogue
 
     <p>Classement par : </p>
     <div class="article">
+        @if ($content == 'master')
         <a href="/produit?sort=price&order=asc"><button type="button">Prix croissant</button> </a>
         <a href="/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
         <a href="/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
-        @if ($content == 'masterAdmin')
-            <a href="{{route('creerProduit')}}"><button type="button">Créer nouveau</button></a>
+        @elseif($content == 'masterAdmin')
+            <a href="/admin/produit?sort=price&order=asc"><button type="button">Prix croissant</button> </a>
+            <a href="/admin/produit?sort=price&order=desc"><button type="button">Prix décroissant</button> </a>
+            <a href="/admin/produit?sort=name&order=asc"><button type="button">Nom</button> </a>
+            <a href="{{route('createPrd')}}"><button type="button">Créer nouveau</button></a>
         @endif
     </div>
 
@@ -30,8 +34,6 @@ Catalogue
                 {{number_format((($produit -> price)/100), 2, ',', ' '). '€'}}
                 <img src="{{asset('image/'.$produit -> imgUrl)}}" alt="{{asset('image/'.$produit -> imgUrl)}}" class="photo">
                 {{$produit->description}}<br>
-{{--                {{$produit->created_at}}<br>--}}
-{{--                {{$produit->updated_at}}--}}
                 @if ($content == 'master')
                     <a href="{{route('fiche',$produit->id)}}" class="article"> Fiche produit </a>
                     <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>

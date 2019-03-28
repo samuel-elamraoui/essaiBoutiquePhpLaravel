@@ -74,10 +74,10 @@ Route::middleware('is_admin')->group(function(){
     Route::get('/admin/stats/stocks', 'StockController@stock');
     Route::get('/admin/stats/{orderID}', 'ControllerOrder@show')->name('commande');
     Route::get('/admin/stats/trafic', 'TraficController@trafic');
-    Route::put('/produit/{productID}/MiseaJour','ProductController@update')->name('update');
-    Route::get('/produit/Editer/{productID}','ProductController@edit')->name('edit');
-    Route::get('/produit/Suppression/{productID}','ProductController@preDestroy')->name('preDestroy');
-    Route::get('/produit/Suppression/{productID}/destroy','ProductController@destroy')->name('destroy');
-    Route::get('/produit/creer','ProductController@create')->name('createPrd');
-    Route::post('/produit/Sauvegarde','ProductController@store')->name('addProd');
+    Route::put('/admin/produit/{productID}/MiseaJour','ProductController@update')->name('update');
+    Route::get('/admin/produit/Editer/{productID}','ProductController@edit')->name('edit');
+    Route::get('/admin/produit/Suppression/{productID}','ProductController@preDestroy')->name('preDestroy');
+    Route::get('/admin/produit/Suppression/{productID}/destroy','ProductController@destroy')->name('destroy');
+    Route::get('/admin/produit/creer','ProductController@create')->name('createPrd');
+    Route::post('/admin/produit/Sauvegarde','ProductController@store')->name('addProd');
 });
