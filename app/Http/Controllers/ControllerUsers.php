@@ -52,7 +52,33 @@ class ControllerUsers extends Controller
 
     public function myAccount()
     {
-        return redirect(route('home'));
+        return redirect(route('userAccount'));
+    }
+
+    public function index(Request $request)
+    {
+        return view('user.index', ['user' => Auth::user()]);
+    }
+    public function update($id)
+    {
+        $user = Auth::user($id);
+//        dd($user);
+        $customer = Auth::user()->customers()->first();
+        $adress = $customer->adress()->first();
+        $userComplet=array($user, $customer, $adress);
+
+        return view('user.update', ['userComplet' => $userComplet]);
+    }
+
+    public function updating($id)
+    {
+        return redirect(route('userUpdate', ['id' => $id]));
+    }
+
+    public function orders($id)
+    {
+
+        return view('user.orders');
     }
 
 }

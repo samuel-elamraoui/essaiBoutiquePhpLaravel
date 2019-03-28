@@ -8,7 +8,7 @@ class customer extends Model
 {
     public $timestamps = false;
 
-    public function order()
+    public function orders()
     {
         return $this->hasMany('App\Order');
     }

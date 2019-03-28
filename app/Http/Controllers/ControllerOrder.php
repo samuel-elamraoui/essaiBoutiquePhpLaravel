@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use App\order_head;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ControllerOrder extends Controller
 {
@@ -13,7 +13,7 @@ class ControllerOrder extends Controller
         return view('orders.search');
     }
 
-    function index (Request $request)
+    public function index (Request $request)
     {
         $sort = "id";
         $order = "desc";
@@ -21,9 +21,19 @@ class ControllerOrder extends Controller
             $sort = $request->get('sort');
             $order = $request->get('order');
         }
-        $orders = Order::orderby("$sort", "$order")->get();
+        if($request->path() == 'admin/commandes'){
+            $orders = Order::orderby("$sort", "$order")->get();
+        } else {
+            $customer = Auth::user()->customers()->first();
+
+            $orders = Order::has('customer', '==', $customer->id)->get();
+        }
+
         $today = Carbon::now()->format('Y-m-d');
+
         return view('orders.list', ['orders' => $orders], ['today' => $today]);
+
+
     }
 
     public function preDestroy($id)
@@ -44,7 +54,7 @@ class ControllerOrder extends Controller
         return view('orders.index', ['fromUrl' => $orderId]);
     }
 
-    function show($id){
+    public function show($id){
         $commandes = Order::where('id', $id)->first();
         $today = Carbon::now()->format('Y-m-d');
 //        dd($commandes->delivery_cost);
