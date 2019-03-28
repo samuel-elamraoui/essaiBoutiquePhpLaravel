@@ -75,6 +75,8 @@ class ProductController extends Controller
     public function update(Request $request, $productID)
     {
 
+
+
         $data = $request->all();
         $data['price'] = $data['price'] * 100;
 
@@ -102,6 +104,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+
 
         $produit = Product::find($id);
 //        dd($data);
