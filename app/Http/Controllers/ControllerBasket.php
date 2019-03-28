@@ -67,6 +67,7 @@ class ControllerBasket extends Controller{
     public function updateQty($orderId, Request $request)
     {
         $basket = Order::find($orderId);
+//        dd($basket);
         $products=$basket->products;
         $noMaj = [];
         foreach ($products as $keyPrd => $product) {
@@ -97,6 +98,7 @@ class ControllerBasket extends Controller{
 
     public function validation(Request $request)
     {
+        //Validation du panier en commande
         $basket = Order::find($request->get('validate'));
         $basket->status = 'V';
         $basket->adr_delivery = $request->session()->get('adressId');
@@ -104,19 +106,26 @@ class ControllerBasket extends Controller{
         $basket->customer_id = $request->session()->get('customerId');
         $basket->save();
 
-        $orderId = $request->session()->get('panier');
-
+        //nettoyage de session
         $request->session()->forget('panier');
         $request->session()->forget('adressId');
         $request->session()->forget('customerId');
         if ($request->session()->has('lastRoute')){
             $request->session()->forget('lastRoute');
         }
-        
 
-        return view('basket.validate', ['orderId' => $orderId]);
+
+        //mise à jour du stock
+        $products = $basket->products;
+        foreach ($products as $product){
+            $product->stock = $product->stock - $product->pivot->quantity;
+            $product->save();
+        }
+
+        return view('basket.validate', ['orderId' => $basket->id]);
       }
-     public function log(){
+
+    public function log(){
         return view('auth.logRegister');
      }
 }
