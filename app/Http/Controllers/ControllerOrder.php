@@ -72,16 +72,16 @@ class ControllerOrder extends Controller
 
     public function show(Request $request, $id)
     {
-        $customer = Auth::user()->customers()->first();
+        $lastRoute = $request->session()->get('lastRoute');
         $order = Order::where('id', $id)->first();
         $today = Carbon::now()->format('Y-m-d');
-//        dd($customer->id, $order->customer_id);
-        if ($customer->id == $order->customer_id){
-            return view('orders.detail', ['order' => $order, 'today' => $today, 'lastRoute' => $request->session()->get('lastRoute')]);
-        } else {
-            return redirect(route('home'));
+        if ($lastRoute == 'users/orders') {
+            $customer = Auth::user()->customers()->first();
+            if ($customer->id != $order->customer_id) {
+                return abort(403, 'Unauthorized action.');
+            }
         }
-
+            return view('orders.detail', ['order' => $order, 'today' => $today]);
 
     }
 }

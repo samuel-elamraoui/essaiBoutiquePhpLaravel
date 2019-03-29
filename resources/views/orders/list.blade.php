@@ -20,17 +20,17 @@
                 @php($totalOrder = $totalOrder + ($product->price) * ($product->pivot->quantity))
             @endforeach
             <strong> Total  : {{number_format(($totalOrder/100),2, ',', ' '). '€'}}</strong><br/>
-            @if($from == 'Admin')
-                <a href="{{route('detailOrder', $order->id)}}">
+            @if($from == 'admin')
+                <a href="{{route('detailOrder', $order->id, $from)}}">
                     <button type="submit" name="detailOrder" value="{{$order->id}}">details</button><br/>
                 </a>
             @else
-                <a href="{{route('userDetailOrder', $order->id)}}">
+                <a href="{{route('userDetailOrder', $order->id, $from)}}">
                     <button type="submit" name="detailOrder" value="{{$order->id}}">details</button><br/>
                 </a>
             @endif
             @if($order->status == 'P' && $order->date_order < $today)
-                <a href="{{route('preDestroyOrder', $order->id)}}">
+                <a href="{{route('preDestroyOrder', $order->id, $from)}}">
                     <button type="submit" name="suppOrder" value="{{$order->id}}">Supprimer</button>
                 </a><br/>
             @endif
