@@ -19,10 +19,8 @@ class is_admin
         if (Auth::user() && Auth::user()->is_admin==1){
             return $next($request);
         }
-        return redirect('/home');
+        return abort(403, 'Unauthorized action.');
 
     }
-
-
-
+    
 }
