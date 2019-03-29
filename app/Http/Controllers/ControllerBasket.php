@@ -77,8 +77,7 @@ class ControllerBasket extends Controller{
             if ($product->stock < $request->get('quantity')[$product->id]) {
                 array_push($noMaj, $product->id);
             } else {
-                $basket->products()->detach($product->id);
-                $basket->products()->attach($product->id, ['quantity' => $request->get('quantity')[$product->id]]);
+                $basket->products()->updateExistingPivot($product->id, ['quantity' => $request->get('quantity')[$product->id]]);
             }
         }
         Session::put([ 'noMaj' => $noMaj]);

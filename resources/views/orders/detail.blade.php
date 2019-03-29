@@ -7,7 +7,7 @@
 @section('content')
 
     {{--@dump($order)--}}
-    <strong>Commande n° {{$order->id}} du {{$order->date_order}}</strong>
+    <strong>Commande n° {{$order->id}} du {{$order->date_order}}. Client : {{$order->customer_id}}</strong><br/>
     @foreach($order->products as $product)
         ref produit : {{$product->id}}<br/>
         {{$product->name}}. disponibilité :  {{$product->stock}}<br/>

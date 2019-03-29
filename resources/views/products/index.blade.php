@@ -34,6 +34,7 @@ Catalogue
                 {{number_format((($produit -> price)/100), 2, ',', ' '). '€'}}
                 <img src="{{asset('image/'.$produit -> imgUrl)}}" alt="{{asset('image/'.$produit -> imgUrl)}}" class="photo">
                 {{$produit->description}}<br>
+                Nombre de commande : {{$produit->orders->count()}}
                 @if ($content == 'master')
                     <a href="{{route('fiche',$produit->id)}}" class="article"> Fiche produit </a>
                     <a href="{{route('addPrd',$produit->id)}}" class="article"> Ajouter </a>

@@ -18,8 +18,6 @@
 @include('includes.header')
 
 <div class="links">
-    <a href="/">Home - client</a>
-    <a href="/admin">Home - admin</a>
 
     {{--<a href="https://nova.laravel.com">Nova</a>--}}
     {{--<a href="https://forge.laravel.com">Forge</a>--}}
