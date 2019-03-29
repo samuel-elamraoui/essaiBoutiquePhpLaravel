@@ -22,6 +22,8 @@ class ControllerBasket extends Controller{
     public function ajoutPanier(Request $request ,$id)
     {
     if ( ! $request->session()->has('panier')) {
+
+
         $basket = new Order;
         $basket->date_order = Carbon::now()->format('Y-m-d');
         $basket->status = 'P';
