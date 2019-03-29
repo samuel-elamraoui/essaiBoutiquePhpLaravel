@@ -33,7 +33,7 @@ Route::get('/commandes/annuler', 'ControllerOrder@cancel');
 //// USER
 Route::post('/users', 'ControllerUsers@myAccount')->name('myAccount');
 Route::get('/users/index', 'ControllerUsers@index')->name('userAccount');
-Route::get('/users/update/{userId}', 'ControllerUsers@update')->name('userUpdate');
+Route::get('/users/update/{userId}', 'ControllerUsers@update')->name('userUpdate') -> middleware('CheckCustomer');
 Route::post('/users/updating/{userId}', 'ControllerUsers@updating')->name('userUpdating');
 Route::get('/users/orders', 'ControllerOrder@index')->name('userOrders');
 Route::get('/users/creation', 'ControllerUsers@create')->name('userCreate');

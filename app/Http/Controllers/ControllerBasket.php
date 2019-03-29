@@ -91,7 +91,7 @@ class ControllerBasket extends Controller{
 
         $noMajs = $request->session()->get('noMaj');
         $request->session()->forget('noMaj');
-        Session::put('lastRoute', '/basket');
+        Session::put('lastRoute', $request->path());
 
 
         return view ('basket.index', ['panier' => $basket], ['noMajs' => $noMajs]);

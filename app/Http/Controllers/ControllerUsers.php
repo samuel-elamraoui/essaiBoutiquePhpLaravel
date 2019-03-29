@@ -14,6 +14,7 @@ class ControllerUsers extends Controller
 {
     public function create(Request $request){
 
+//        dd($request->session()->get('lastRoute'));
         return view('user.create');
     }
 
@@ -37,10 +38,14 @@ class ControllerUsers extends Controller
         $adress->customer_id= $customer->id;
         $adress->save();
 
-        if ($request->session()->get('lastRoute')){
+        if ($request->session()->get('lastRoute' == 'basket')){
             Session::put('customerId', $customer->id);
             Session::put('adressId', $adress->id);
             return redirect(route('basket'));
+
+        } else if ($request->session()->get('lastRoute' == 'user/index')) {
+            return redirect(route('user.update', Auth::id()));
+
         } else {
             return view('user.confirmSave', ['customerName' => $customer->last_name], ['lastRoute' => $request->session()->get('lastRoute')]);
         }
@@ -57,12 +62,12 @@ class ControllerUsers extends Controller
 
     public function index(Request $request)
     {
+        Session::put('lastRoute', $request->path());
         return view('user.index', ['user' => Auth::user()]);
     }
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $user = Auth::user($id);
-//        dd($user);
         $customer = Auth::user()->customers()->first();
         $adress = $customer->adress()->first();
         $userComplet=array($user, $customer, $adress);
