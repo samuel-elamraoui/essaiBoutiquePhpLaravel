@@ -22,5 +22,5 @@ class is_admin
         return abort(403, 'Unauthorized action.');
 
     }
-    
+
 }
